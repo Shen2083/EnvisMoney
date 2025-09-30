@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Logo } from "./logo";
 
 export function Footer() {
   return (
@@ -6,7 +7,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-primary">Envis</h3>
+            <Logo />
             <p className="text-sm text-muted-foreground">
               The AI-powered financial coach for UK families.
             </p>
