@@ -58,7 +58,7 @@ export function WaitlistForm() {
         </div>
         <h3 className="text-2xl font-semibold">You're on the list!</h3>
         <p className="text-muted-foreground max-w-md mx-auto">
-          Thanks for joining our waiting list. We'll be in touch soon with exclusive early access to Envis.
+          Thanks for joining the waitlist. We'll be in touch soon with exclusive early access to Envis.
         </p>
         <p className="text-sm text-muted-foreground">
           Expected launch: Feb 2026
@@ -159,7 +159,7 @@ export function WaitlistForm() {
           className="w-full"
           data-testid="button-submit-waitlist"
         >
-          Join the Waiting List
+          Request Early Access
         </Button>
 
         <p className="text-xs text-center text-muted-foreground">

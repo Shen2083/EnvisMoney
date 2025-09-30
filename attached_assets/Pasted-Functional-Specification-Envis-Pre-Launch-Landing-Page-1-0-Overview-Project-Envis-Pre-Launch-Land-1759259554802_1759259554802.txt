@@ -1,0 +1,238 @@
+Functional Specification: Envis Pre-Launch Landing Page
+1.0 Overview
+
+Project: Envis Pre-Launch Landing Page
+
+URL: envis.money
+
+Objective: To gauge market appetite for Envis by capturing email sign-ups for an early access waitlist. The page must clearly and compellingly communicate the core value proposition to the target audience (UK-based families and couples, ages 28-50).
+
+Primary Conversion Goal: A user successfully submits their email address via the sign-up form.
+
+2.0 Page Structure & Layout
+
+The landing page will be a single, responsive page composed of the following sections in order. It must be optimized for both desktop and mobile viewing.
+
+Hero Section: Full-width, immediate impact, with a clear headline and call-to-action (CTA).
+
+Problem Section: A three-point section highlighting the key pain points of the target audience.
+
+Solution / Core Features Section: A three-part showcase of Envis's key innovative pillars.
+
+"How It Works" Section: A simple, 3-step visual guide to using the service.
+
+Social Proof / Data Section: A high-impact section featuring key statistics that build credibility.
+
+Trust & Security Section: A section to reassure users about data security and regulatory alignment.
+
+Final Call-to-Action (CTA) Section: A final, prominent email capture form.
+
+Footer: Standard footer with minimal links.
+
+3.0 Content & Copywriting
+
+(Note: All copy is crafted to be benefit-driven, addressing the user's needs and aspirations.)
+
+3.1 Hero Section
+Visual: A clean, aspirational image of a modern, diverse couple or family (ages 30-40) looking relaxed and happy while planning something positive (e.g., a holiday, looking at a new home), not stressed over a budget. The feeling should be one of relief and optimism.
+
+H1 (Main Headline):
+
+Finally, a Financial Partner That Manages Your Family’s Money for You.
+
+H2 (Sub-headline):
+
+Envis is the AI-powered coach that proactively coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
+
+CTA Button:
+
+Text: Request Early Access
+
+Action: Smooth scroll to the Final CTA Section (Section 7.0).
+
+3.2 Problem Section
+Layout: Three columns, each with a simple, clean icon above the headline.
+
+Section Headline (H2):
+
+Family finances are complicated. Your bank app isn't helping.
+
+Column 1:
+
+Icon: An icon representing tangled paths or multiple accounts.
+
+Headline (H3): Coordination Chaos
+
+Body Text: Juggling personal accounts, a joint account, and credit cards feels like a full-time job. It's impossible to see the complete picture.
+
+Column 2:
+
+Icon: An icon representing a stressed or worried face, or a brain with a loading symbol.
+
+Headline (H3): Constant Worry
+
+Body Text: Are we saving enough? Did that bill get paid on time? The mental load of managing it all is exhausting and creates friction.
+
+Column 3:
+
+Icon: An icon representing a signpost with question marks.
+
+Headline (H3): The Advice Gap
+
+Body Text: Professional financial advice is expensive and inaccessible. Who can you ask for simple, trustworthy guidance for your family's future?
+
+3.3 Solution / Core Features Section
+Layout: A three-part section, alternating image and text blocks for visual interest.
+
+Section Headline (H2):
+
+Introducing Envis. Your Family's Financial Brain.
+
+Feature 1 (Agentic AI):
+
+Headline (H3): Proactive AI That Works for You
+
+Body Text: Envis doesn't just show you charts of past spending. It acts on your behalf—sweeping surplus cash to savings, preventing overdrafts, and alerting you to issues before they happen.
+
+Visual: A simple animation or graphic showing money automatically moving from a current account to a "Holiday Fund" pot.
+
+Feature 2 (Holistic Planning):
+
+Headline (H3): One Family, One Financial Plan
+
+Body Text: Connect all your accounts—personal, joint, and credit cards—into a single, dynamic plan. See how every transaction impacts your shared goals, like saving for a house or a dream holiday, in real-time.
+
+Visual: A clean UI mockup showing a dashboard with "Our House Deposit," "James's ISA," and "Sarah's Account" all feeding into one unified progress bar.
+
+Feature 3 (Conversational AI):
+
+Headline (H3): Financial Guidance That Speaks Your Language
+
+Body Text: Forget spreadsheets. Just ask questions in plain English. "How much can we spend on groceries this month?" or "Are we on track for the nursery fees?" Get clear, simple answers instantly.
+
+Visual: A mockup of a chat interface on a phone, showing the user asking a question and Envis providing a clear, concise answer.
+
+3.4 "How It Works" Section
+Layout: A simple, clean 3-step horizontal graphic.
+
+Section Headline (H2):
+
+Get Started in Minutes
+
+Step 1:
+
+Title: Securely Connect Your Accounts
+
+Description: Using Open Banking technology, link your accounts in seconds with bank-level security.
+
+Step 2:
+
+Title: Define Your Family's Goals
+
+Description: Tell Envis what you're saving for, from a new car to your children's future.
+
+Step 3:
+
+Title: Let Envis Handle the Rest
+
+Description: Our AI gets to work, providing insights and automating tasks to help you reach your goals faster.
+
+3.5 Social Proof / Data Section
+Layout: A visually bold, full-width section with large numbers to draw the eye.
+
+Section Headline (H2):
+
+Built to Reduce Stress and Save Money.
+
+Data Point 1:
+
+Number: 85%
+
+Label: Reduction in Financial Stress
+
+Data Point 2:
+
+Number: 92%
+
+Label: Avoidance of Late Fees
+
+Data Point 3:
+
+Number: 22%
+
+Label: Increase in Monthly Savings
+
+Disclaimer (small print): Based on pilot program user data.
+
+3.6 Trust & Security Section
+Layout: Four columns, each with a security-related icon.
+
+Section Headline (H2):
+
+Your Security is Our Priority.
+
+Column 1: Bank-Level Encryption (Icon: Padlock)
+
+Column 2: FCA-Aligned Principles (Icon: Official Building/Gavel)
+
+Column 3: Read-Only Access (Icon: Eye with a slash through it)
+
+Column 4: GDPR Compliant (Icon: Shield with a checkmark)
+
+3.7 Final Call-to-Action (CTA) Section
+Layout: A clean, focused section with a headline and the email form. This is the primary conversion point.
+
+Section Headline (H2):
+
+Ready to Outsmart Money, Together?
+
+Body Text:
+
+Be the first to experience the future of family finance. Join the waitlist for exclusive early access to Envis.
+
+Email Input Form:
+
+Placeholder Text: Enter your email address
+
+Button Text: Request Early Access
+
+3.8 Footer
+Layout: Simple, single-line footer.
+
+Content:
+
+Envis Logo (small)
+
+© 2025 Envis. All rights reserved.
+
+Link to a simple, placeholder Privacy Policy page.
+
+4.0 Functional Requirements
+
+Responsiveness: The page must be fully responsive and display correctly on all major desktop browsers (Chrome, Firefox, Safari, Edge) and mobile devices (iOS and Android).
+
+Email Capture Form:
+
+Field: A single input field for email.
+
+Validation: Must perform client-side validation to ensure the input is a valid email format.
+
+Submission: On submission, the email address should be sent to a secure endpoint or a third-party mailing list service (e.g., Mailchimp, ConvertKit).
+
+Success State: Upon successful submission, the form should be replaced with a confirmation message: "Thank you! We've added you to the list. We'll be in touch soon."
+
+Error State: If the submission fails (e.g., invalid email, server error), an inline error message should appear: "Please enter a valid email address." or "Something went wrong. Please try again."
+
+Analytics: Basic analytics (e.g., Google Analytics or a similar tool) should be integrated to track page views and CTA button clicks/form submissions to measure the conversion rate.
+
+5.0 Design & Visual Guidelines
+
+Tone: Trustworthy, modern, clean, professional, and optimistic.
+
+Color Palette: Primary colors should be blues and greens to evoke trust, stability, and growth. Use a bright, warm accent color (like a soft orange or yellow) for CTA buttons to make them stand out.
+
+Typography: Use a clean, modern, and highly legible sans-serif font (e.g., Inter, Poppins, Lato).
+
+Imagery: Use high-quality, authentic-looking stock photography of diverse couples and families. Avoid overly corporate or cheesy stock photos.
+
+Icons: Use a consistent set of clean, line-art icons.

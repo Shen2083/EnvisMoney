@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock } from "lucide-react";
+import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Network, BrainCircuit, Signpost, Zap, Target, MessageCircle, Link2, UserPlus, Play, Building, EyeOff, ShieldCheck } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { Footer } from "@/components/footer";
 import heroImage from "@assets/generated_images/UK_family_using_tablet_together_f0a9567d.png";
@@ -14,38 +14,41 @@ export default function Home() {
     }
   };
 
-  const benefits = [
+  const features = [
     {
-      icon: Heart,
-      title: "85% Reduction",
-      subtitle: "in Financial Stress",
-      description: "Stop worrying about money. Our AI keeps you on track."
+      icon: Zap,
+      title: "Proactive AI That Works for You",
+      description: "Envis doesn't just show you charts of past spending. It acts on your behalf—sweeping surplus cash to savings, preventing overdrafts, and alerting you to issues before they happen."
     },
     {
-      icon: Shield,
-      title: "92% Success Rate",
-      subtitle: "Avoiding Late Fees",
-      description: "Never miss a payment with proactive alerts."
+      icon: Target,
+      title: "One Family, One Financial Plan",
+      description: "Connect all your accounts—personal, joint, and credit cards—into a single, dynamic plan. See how every transaction impacts your shared goals, like saving for a house or a dream holiday, in real-time."
     },
     {
-      icon: PiggyBank,
-      title: "Smart Savings",
-      subtitle: "Opportunities",
-      description: "AI identifies ways to save money across all accounts."
-    },
-    {
-      icon: Users,
-      title: "Whole Family",
-      subtitle: "Financial View",
-      description: "See everything in one place, manage together."
+      icon: MessageCircle,
+      title: "Financial Guidance That Speaks Your Language",
+      description: "Forget spreadsheets. Just ask questions in plain English. \"How much can we spend on groceries this month?\" or \"Are we on track for the nursery fees?\" Get clear, simple answers instantly."
     }
   ];
 
   const trustPoints = [
-    "FCA-regulated Open Banking technology",
-    "Bank-level encryption & security",
-    "Read-only access—we can never move your money",
-    "You control your data, revoke access anytime"
+    {
+      icon: Lock,
+      title: "Bank-Level Encryption"
+    },
+    {
+      icon: Building,
+      title: "FCA-Aligned Principles"
+    },
+    {
+      icon: EyeOff,
+      title: "Read-Only Access"
+    },
+    {
+      icon: ShieldCheck,
+      title: "GDPR Compliant"
+    }
   ];
 
   return (
@@ -59,12 +62,10 @@ export default function Home() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                  Your Family's
-                  <span className="block text-primary">Financial Future,</span>
-                  <span className="block">Simplified</span>
+                  Finally, a Financial Partner That Manages Your Family's Money for You.
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                  Envis is the AI-powered financial coach helping UK families reduce stress, avoid late fees, and achieve their goals together through intelligent Open Banking technology.
+                  Envis is the AI-powered coach that proactively coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
                 </p>
               </div>
 
@@ -74,7 +75,7 @@ export default function Home() {
                 className="text-base gap-2"
                 data-testid="button-join-waitlist-hero"
               >
-                Join the Waiting List
+                Request Early Access
                 <ArrowRight className="h-5 w-5" />
               </Button>
 
@@ -98,103 +99,203 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits Grid */}
-      <section className="py-16 md:py-24">
+      {/* Problem Section */}
+      <section className="py-16 md:py-24 bg-card/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Proven Results for UK Families
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Family finances are complicated. Your bank app isn't helping.
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Based on pilot studies with real families facing the cost-of-living crisis
-            </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((benefit, index) => (
-              <Card
-                key={index}
-                className="p-8 text-center hover-elevate"
-                data-testid={`benefit-card-${index}`}
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-4">
-                  <benefit.icon className="h-6 w-6" />
-                </div>
-                <div className="text-2xl font-bold text-foreground mb-1">{benefit.title}</div>
-                <div className="text-sm font-medium text-primary mb-3">{benefit.subtitle}</div>
-                <p className="text-sm text-muted-foreground">
-                  {benefit.description}
-                </p>
-              </Card>
-            ))}
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="text-center space-y-4" data-testid="problem-coordination">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+                <Network className="h-8 w-8" />
+              </div>
+              <h3 className="text-xl font-semibold">Coordination Chaos</h3>
+              <p className="text-muted-foreground">
+                Juggling personal accounts, a joint account, and credit cards feels like a full-time job. It's impossible to see the complete picture.
+              </p>
+            </div>
+
+            <div className="text-center space-y-4" data-testid="problem-worry">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+                <BrainCircuit className="h-8 w-8" />
+              </div>
+              <h3 className="text-xl font-semibold">Constant Worry</h3>
+              <p className="text-muted-foreground">
+                Are we saving enough? Did that bill get paid on time? The mental load of managing it all is exhausting and creates friction.
+              </p>
+            </div>
+
+            <div className="text-center space-y-4" data-testid="problem-advice">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+                <Signpost className="h-8 w-8" />
+              </div>
+              <h3 className="text-xl font-semibold">The Advice Gap</h3>
+              <p className="text-muted-foreground">
+                Professional financial advice is expensive and inaccessible. Who can you ask for simple, trustworthy guidance for your family's future?
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Waitlist Form Section */}
-      <section id="waitlist" className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/10">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Be First to Experience Envis
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Join the waiting list for exclusive early access. Limited spots available for our Feb 2026 beta programme.
-            </p>
-          </div>
-
-          <Card className="p-8 md:p-12">
-            <WaitlistForm />
-          </Card>
-        </div>
-      </section>
-
-      {/* Trust & Security */}
+      {/* Solution / Core Features Section */}
       <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Lock className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Built on Trust & Security
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Introducing Envis. Your Family's Financial Brain.
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Powered by Open Banking—trusted by 15+ million UK adults
-            </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {trustPoints.map((point, index) => (
+          <div className="space-y-24">
+            {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 p-4"
-                data-testid={`trust-point-${index}`}
+                className={`grid gap-12 lg:grid-cols-2 items-center ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+                data-testid={`feature-${index}`}
               >
-                <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">{point}</span>
+                <div className={`space-y-6 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
+                    <feature.icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-semibold">{feature.title}</h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+                <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                  <div className="relative rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 p-12 min-h-[300px] flex items-center justify-center">
+                    <feature.icon className="h-32 w-32 text-primary/20" />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-card/50">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Transform Your Family's Finances Today
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Don't wait. Join hundreds of UK families already on the list.
+      {/* How It Works Section */}
+      <section className="py-16 md:py-24 bg-card/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Get Started in Minutes
+            </h2>
+          </div>
+
+          <div className="grid gap-12 md:grid-cols-3">
+            <div className="text-center space-y-4" data-testid="step-1">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">
+                1
+              </div>
+              <h3 className="text-xl font-semibold">Securely Connect Your Accounts</h3>
+              <p className="text-muted-foreground">
+                Using Open Banking technology, link your accounts in seconds with bank-level security.
+              </p>
+            </div>
+
+            <div className="text-center space-y-4" data-testid="step-2">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">
+                2
+              </div>
+              <h3 className="text-xl font-semibold">Define Your Family's Goals</h3>
+              <p className="text-muted-foreground">
+                Tell Envis what you're saving for, from a new car to your children's future.
+              </p>
+            </div>
+
+            <div className="text-center space-y-4" data-testid="step-3">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">
+                3
+              </div>
+              <h3 className="text-xl font-semibold">Let Envis Handle the Rest</h3>
+              <p className="text-muted-foreground">
+                Our AI gets to work, providing insights and automating tasks to help you reach your goals faster.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof / Data Section */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Built to Reduce Stress and Save Money.
+            </h2>
+          </div>
+
+          <div className="grid gap-12 md:grid-cols-3">
+            <div className="text-center space-y-4" data-testid="stat-stress">
+              <div className="text-6xl md:text-7xl font-bold text-primary mb-2">85%</div>
+              <p className="text-lg font-medium">Reduction in Financial Stress</p>
+            </div>
+
+            <div className="text-center space-y-4" data-testid="stat-fees">
+              <div className="text-6xl md:text-7xl font-bold text-primary mb-2">92%</div>
+              <p className="text-lg font-medium">Avoidance of Late Fees</p>
+            </div>
+
+            <div className="text-center space-y-4" data-testid="stat-savings">
+              <div className="text-6xl md:text-7xl font-bold text-primary mb-2">22%</div>
+              <p className="text-lg font-medium">Increase in Monthly Savings</p>
+            </div>
+          </div>
+
+          <p className="text-center text-sm text-muted-foreground mt-8">
+            Based on pilot program user data.
           </p>
-          <Button
-            size="lg"
-            onClick={scrollToWaitlist}
-            className="text-base gap-2"
-            data-testid="button-join-waitlist-cta"
-          >
-            Join the Waiting List
-            <ArrowRight className="h-5 w-5" />
-          </Button>
+        </div>
+      </section>
+
+      {/* Trust & Security */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Your Security is Our Priority.
+            </h2>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {trustPoints.map((point, index) => (
+              <div
+                key={index}
+                className="text-center space-y-4"
+                data-testid={`trust-point-${index}`}
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+                  <point.icon className="h-8 w-8" />
+                </div>
+                <h3 className="text-lg font-semibold">{point.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA / Waitlist Section */}
+      <section id="waitlist" className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/10">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+              Ready to Outsmart Money, Together?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Be the first to experience the future of family finance. Join the waitlist for exclusive early access to Envis.
+            </p>
+          </div>
+
+          <Card className="p-8 md:p-12">
+            <WaitlistForm />
+          </Card>
         </div>
       </section>
 

@@ -22,7 +22,7 @@ export function Navigation() {
               onClick={() => scrollToSection("waitlist")}
               data-testid="button-join-waitlist-nav"
             >
-              Join Waiting List
+              Request Early Access
             </Button>
           </div>
         </div>
