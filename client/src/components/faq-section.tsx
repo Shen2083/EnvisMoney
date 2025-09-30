@@ -17,7 +17,7 @@ export function FAQSection() {
     },
     {
       question: "When will Envis launch?",
-      answer: "We're targeting a Q2 2025 launch for our beta programme. Waiting list members will be the first to get access and help shape the final product with their feedback."
+      answer: "We're targeting a Feb 2026 launch for our beta programme. Waiting list members will be the first to get access and help shape the final product with their feedback."
     },
     {
       question: "Which banks are supported?",

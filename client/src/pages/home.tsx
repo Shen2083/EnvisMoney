@@ -139,7 +139,7 @@ export default function Home() {
               Be First to Experience Envis
             </h2>
             <p className="text-lg text-muted-foreground">
-              Join the waiting list for exclusive early access. Limited spots available for our Q2 2025 beta programme.
+              Join the waiting list for exclusive early access. Limited spots available for our Feb 2026 beta programme.
             </p>
           </div>
 

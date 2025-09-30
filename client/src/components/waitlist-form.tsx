@@ -61,7 +61,7 @@ export function WaitlistForm() {
           Thanks for joining our waiting list. We'll be in touch soon with exclusive early access to Envis.
         </p>
         <p className="text-sm text-muted-foreground">
-          Expected launch: Q2 2025
+          Expected launch: Feb 2026
         </p>
       </div>
     );
