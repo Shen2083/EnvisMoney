@@ -61,7 +61,7 @@ export default function Home() {
             <div className="space-y-6 lg:space-y-8">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                  Finally, a Financial Partner That Manages Your Family's Money for You.
+                  Your Family's Financial Partner, Finally.
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   Envis is the AI-powered coach that proactively coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
