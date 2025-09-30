@@ -19,25 +19,11 @@ export function Navigation() {
           
           <div className="hidden md:flex items-center gap-6">
             <button
-              onClick={() => scrollToSection("how-it-works")}
+              onClick={() => scrollToSection("waitlist")}
               className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
-              data-testid="link-how-it-works"
+              data-testid="link-waitlist"
             >
-              How it Works
-            </button>
-            <button
-              onClick={() => scrollToSection("benefits")}
-              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
-              data-testid="link-benefits"
-            >
-              Benefits
-            </button>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
-              data-testid="link-faq"
-            >
-              FAQ
+              Early Access
             </button>
           </div>
 
