@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -20,7 +21,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, AlertCircle } from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -33,6 +35,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export function WaitlistForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -44,10 +47,35 @@ export function WaitlistForm() {
     },
   });
 
+  const mutation = useMutation({
+    mutationFn: async (data: FormData) => {
+      const res = await apiRequest("POST", "/api/waitlist", data);
+      return await res.json();
+    },
+    onSuccess: () => {
+      setIsSubmitted(true);
+      setErrorMessage("");
+    },
+    onError: (error: any) => {
+      const errorText = error?.message || "Failed to join waitlist. Please try again.";
+      // Extract the error message from the response if available
+      try {
+        const match = errorText.match(/\d+:\s*({.*})/);
+        if (match) {
+          const errorJson = JSON.parse(match[1]);
+          setErrorMessage(errorJson.error || errorText);
+        } else {
+          setErrorMessage(errorText);
+        }
+      } catch {
+        setErrorMessage(errorText);
+      }
+    },
+  });
+
   const onSubmit = (data: FormData) => {
-    console.log("Waitlist signup:", data);
-    setIsSubmitted(true);
-    //todo: remove mock functionality - integrate with backend API
+    setErrorMessage("");
+    mutation.mutate(data);
   };
 
   if (isSubmitted) {
@@ -153,13 +181,21 @@ export function WaitlistForm() {
           )}
         />
 
+        {errorMessage && (
+          <div className="flex items-center gap-2 p-4 rounded-lg bg-destructive/10 text-destructive" data-testid="error-message">
+            <AlertCircle className="h-5 w-5 flex-shrink-0" />
+            <p className="text-sm">{errorMessage}</p>
+          </div>
+        )}
+
         <Button
           type="submit"
           size="lg"
           className="w-full"
+          disabled={mutation.isPending}
           data-testid="button-submit-waitlist"
         >
-          Request Early Access
+          {mutation.isPending ? "Submitting..." : "Request Early Access"}
         </Button>
 
         <p className="text-xs text-center text-muted-foreground">
