@@ -56,15 +56,15 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-16 bg-gradient-to-br from-background via-background to-primary/5">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-            <div className="space-y-8">
+      <section className="relative pt-16 bg-gradient-to-br from-background via-background to-primary/5">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+            <div className="space-y-6 lg:space-y-8">
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                   Finally, a Financial Partner That Manages Your Family's Money for You.
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   Envis is the AI-powered coach that proactively coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
                 </p>
               </div>
@@ -85,12 +85,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative lg:pl-8">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <img
                   src={heroImage}
                   alt="UK family managing finances together"
-                  className="w-full h-auto"
+                  className="w-full h-full object-cover"
                   data-testid="img-hero"
                 />
               </div>
