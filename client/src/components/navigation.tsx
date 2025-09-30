@@ -15,16 +15,6 @@ export function Navigation() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Logo />
-          
-          <div className="hidden md:flex items-center gap-6">
-            <button
-              onClick={() => scrollToSection("waitlist")}
-              className="text-sm font-medium text-foreground hover-elevate px-3 py-2 rounded-md"
-              data-testid="link-waitlist"
-            >
-              Early Access
-            </button>
-          </div>
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
