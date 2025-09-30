@@ -1,10 +1,9 @@
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Network, BrainCircuit, Signpost, Zap, Target, MessageCircle, Link2, UserPlus, Play, Building, EyeOff, ShieldCheck } from "lucide-react";
+import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Network, BrainCircuit, Signpost, Zap, Target, MessageCircle, Link2, UserPlus, Play, Building, EyeOff, ShieldCheck, Wallet, TrendingUp, CreditCard } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { Footer } from "@/components/footer";
-import heroImage from "@assets/generated_images/UK_family_using_tablet_together_f0a9567d.png";
 
 export default function Home() {
   const scrollToWaitlist = () => {
@@ -86,13 +85,65 @@ export default function Home() {
             </div>
 
             <div className="relative lg:pl-8">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
-                <img
-                  src={heroImage}
-                  alt="UK family managing finances together"
-                  className="w-full h-full object-cover"
-                  data-testid="img-hero"
-                />
+              <div className="relative h-[400px] lg:h-[500px]" data-testid="hero-graphic">
+                {/* Abstract background shapes */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <div className="absolute top-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-10 left-10 w-48 h-48 bg-accent/20 rounded-full blur-3xl"></div>
+                </div>
+
+                {/* Floating icon cards */}
+                <div className="relative h-full flex items-center justify-center">
+                  <div className="grid grid-cols-2 gap-6 w-full max-w-md">
+                    {/* Top left - Accounts */}
+                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Wallet className="h-6 w-6 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-center">Connected Accounts</span>
+                      </div>
+                    </Card>
+
+                    {/* Top right - Savings */}
+                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform mt-8">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <PiggyBank className="h-6 w-6 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-center">Auto Savings</span>
+                      </div>
+                    </Card>
+
+                    {/* Bottom left - Goals */}
+                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Target className="h-6 w-6 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-center">Family Goals</span>
+                      </div>
+                    </Card>
+
+                    {/* Bottom right - Growth */}
+                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform mt-8">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <TrendingUp className="h-6 w-6 text-primary" />
+                        </div>
+                        <span className="text-sm font-medium text-center">Smart Insights</span>
+                      </div>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Connecting lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 0 }}>
+                  <line x1="30%" y1="30%" x2="70%" y2="30%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
+                  <line x1="30%" y1="70%" x2="70%" y2="70%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
+                  <line x1="30%" y1="30%" x2="30%" y2="70%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
+                  <line x1="70%" y1="30%" x2="70%" y2="70%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
+                </svg>
               </div>
             </div>
           </div>
