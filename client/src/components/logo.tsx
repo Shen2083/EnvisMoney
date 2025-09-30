@@ -1,61 +1,39 @@
 export function Logo({ className = "h-8 w-auto" }: { className?: string }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2.5">
       <svg
-        viewBox="0 0 40 40"
+        viewBox="0 0 36 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
       >
-        {/* Outer circle representing family unity */}
-        <circle
-          cx="20"
-          cy="20"
-          r="18"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-primary"
-          opacity="0.2"
-        />
-        
-        {/* Upward arrow/growth path */}
+        {/* Stylized "E" that forms a protective shelter/house shape */}
         <path
-          d="M12 28 L20 12 L28 20"
+          d="M6 30V6H30M6 18H26M6 30H26"
           stroke="currentColor"
-          strokeWidth="2.5"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
           className="text-primary"
         />
         
-        {/* AI/Intelligence dot at top */}
+        {/* AI intelligence indicator - subtle dot accent */}
         <circle
-          cx="20"
-          cy="12"
-          r="3"
+          cx="30"
+          cy="6"
+          r="2.5"
           fill="currentColor"
-          className="text-primary"
-        />
-        
-        {/* Supporting dots representing family members */}
-        <circle
-          cx="12"
-          cy="28"
-          r="2"
-          fill="currentColor"
-          className="text-primary"
-          opacity="0.6"
-        />
-        <circle
-          cx="28"
-          cy="20"
-          r="2"
-          fill="currentColor"
-          className="text-primary"
-          opacity="0.6"
+          className="text-primary opacity-70"
         />
       </svg>
-      <span className="text-2xl font-bold text-primary">Envis</span>
+      <span className="text-xl font-bold tracking-tight" style={{ 
+        background: 'linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.7) 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text'
+      }}>
+        Envis
+      </span>
     </div>
   );
 }
