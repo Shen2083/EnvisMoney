@@ -1,16 +1,24 @@
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Download, Users } from "lucide-react";
+import { ArrowLeft, Download, Users, LogOut } from "lucide-react";
 import type { Waitlist } from "@shared/schema";
 
 export default function AdminDashboard() {
+  const [, setLocation] = useLocation();
+
   useEffect(() => {
     document.title = "Admin Dashboard | Envis";
-  }, []);
+    
+    // Check if authenticated
+    const token = localStorage.getItem("adminToken");
+    if (!token) {
+      setLocation("/admin-login");
+    }
+  }, [setLocation]);
 
   const { data, isLoading, error } = useQuery<{ entries: Waitlist[] }>({
     queryKey: ["/api/waitlist"],
@@ -67,13 +75,26 @@ export default function AdminDashboard() {
         </div>
 
         <div className="space-y-6">
-          <div>
-            <h1 className="text-3xl font-bold mb-2" data-testid="heading-admin-dashboard">
-              Waitlist Dashboard
-            </h1>
-            <p className="text-muted-foreground">
-              View and manage all waitlist signups for Envis
-            </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold mb-2" data-testid="heading-admin-dashboard">
+                Waitlist Dashboard
+              </h1>
+              <p className="text-muted-foreground">
+                View and manage all waitlist signups for Envis
+              </p>
+            </div>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                localStorage.removeItem("adminToken");
+                setLocation("/admin-login");
+              }}
+              data-testid="button-logout"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              Logout
+            </Button>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
