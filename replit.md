@@ -10,6 +10,24 @@ The landing page is designed as a multi-page application built with React, featu
 
 Preferred communication style: Simple, everyday language.
 
+## Recent Updates & User Feedback (October 2025)
+
+### Messaging Clarifications:
+- **Read-Only Access Clarification:** Updated homepage to clearly explain that Envis operates with read-only access by default for insights and recommendations. Money movement features (like automated transfers to savings) require separate explicit permission for Payment Initiation Services (PIS). This resolves the apparent contradiction between "read-only access" and "sweeping surplus cash to savings."
+- **Reduced "AI" Buzzword:** Softened AI language throughout the site, changing "AI-powered" to "intelligent" and removing unnecessary "AI" mentions. Focus is now on what the product does, not the underlying technology.
+
+### User Insights:
+- Demo mode preferred over free trial - users want to interact with the product before connecting real accounts
+- User interested in participating in interviews for product development
+- Cost and feature flexibility/customization are key decision factors
+- Need for clear MVP that demonstrates value before users connect all accounts
+
+### Admin Dashboard:
+- Password-protected admin portal implemented at /admin-login and /admin
+- Waitlist data protected with Bearer token authentication
+- CSV export functionality for waitlist management
+- Security note: Current implementation uses password-as-token (functional but requires upgrade to proper session management for production)
+
 ## System Architecture
 
 ### Frontend Architecture

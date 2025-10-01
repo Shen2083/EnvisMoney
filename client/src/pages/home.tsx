@@ -17,8 +17,8 @@ export default function Home() {
   const features = [
     {
       icon: Zap,
-      title: "Proactive AI That Works for You",
-      description: "Envis doesn't just show you charts of past spending. It acts on your behalf—sweeping surplus cash to savings, preventing overdrafts, and alerting you to issues before they happen."
+      title: "Proactive Insights and Smart Actions",
+      description: "Envis doesn't just show you charts of past spending. It provides intelligent recommendations—identifying surplus cash for savings, preventing overdrafts, and alerting you to issues before they happen. You control which actions to enable: read-only insights or optional automated transfers with your explicit permission."
     },
     {
       icon: Target,
@@ -65,7 +65,7 @@ export default function Home() {
                   Your Family's Financial Partner, Finally.
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  Envis is the AI-powered coach that proactively coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
+                  Envis is the intelligent financial coach that proactively coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
                 </p>
               </div>
 
@@ -112,7 +112,7 @@ export default function Home() {
                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                           <PiggyBank className="h-6 w-6 text-primary" />
                         </div>
-                        <span className="text-sm font-medium text-center">Auto Savings</span>
+                        <span className="text-sm font-medium text-center">Smart Savings</span>
                       </div>
                     </Card>
 
@@ -268,7 +268,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold">Let Envis Handle the Rest</h3>
               <p className="text-muted-foreground">
-                Our AI gets to work, providing insights and automating tasks to help you reach your goals faster.
+                Envis gets to work, providing insights and smart recommendations to help you reach your goals faster.
               </p>
             </div>
           </div>
