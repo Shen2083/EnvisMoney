@@ -1,11 +1,12 @@
 import { Mail } from "lucide-react";
+import { Link } from "wouter";
 import { Logo } from "./logo";
 
 export function Footer() {
   return (
     <footer className="border-t bg-card/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 md:gap-12">
           <div className="space-y-4">
             <Logo />
             <p className="text-sm text-muted-foreground">
@@ -31,64 +32,17 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Product</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-how-it-works-footer">
-                  How it Works
-                </button>
-              </li>
-              <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-pricing-footer">
-                  Pricing
-                </button>
-              </li>
-              <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-security-footer">
-                  Security
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-about-footer">
-                  About Us
-                </button>
-              </li>
-              <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-blog-footer">
-                  Blog
-                </button>
-              </li>
-              <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-careers-footer">
-                  Careers
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
             <h4 className="font-semibold mb-4">Legal</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-privacy-footer">
+                <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-privacy-footer">
                   Privacy Policy
-                </button>
+                </Link>
               </li>
               <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-terms-footer">
+                <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-terms-footer">
                   Terms of Service
-                </button>
-              </li>
-              <li>
-                <button className="text-muted-foreground hover-elevate px-2 py-1 rounded-md" data-testid="link-compliance-footer">
-                  FCA Compliance
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
