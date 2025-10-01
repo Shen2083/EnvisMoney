@@ -4,7 +4,7 @@
 
 Envis is a pre-launch landing page for an AI-powered financial coaching service targeting UK families. The project aims to gauge market interest by capturing email sign-ups for an early access waitlist. The application presents a compelling value proposition centered around reducing financial stress, avoiding late fees, and helping families achieve financial goals through intelligent automation and Open Banking integration.
 
-The landing page is designed as a single-page application built with React, featuring multiple sections that progressively disclose the product's benefits, build trust through social proof, and drive conversions through strategic call-to-action placements.
+The landing page is designed as a multi-page application built with React, featuring a homepage with multiple sections that progressively disclose the product's benefits, build trust through social proof, and drive conversions through strategic call-to-action placements. Additional legal pages (Privacy Policy and Terms of Service) provide comprehensive UK fintech-compliant documentation.
 
 ## User Preferences
 
@@ -18,6 +18,11 @@ Preferred communication style: Simple, everyday language.
 - React 18 with TypeScript for type-safe component development
 - Vite as the build tool and development server, chosen for its fast HMR and optimized production builds
 - Wouter for lightweight client-side routing (minimal bundle size compared to React Router)
+
+**Page Structure:**
+- Homepage (/) - Main landing page with hero, features, benefits, FAQ, and waitlist form
+- Privacy Policy (/privacy) - Comprehensive UK GDPR-compliant privacy policy with 14 sections covering data collection, Open Banking, user rights, ICO complaints, and security
+- Terms of Service (/terms) - Pre-launch/beta terms with 14 sections covering eligibility, Open Banking read-only access, no financial advice disclaimer, liability limitations, and governing law (England & Wales)
 
 **Component Design System:**
 - Shadcn UI component library (Radix UI primitives) for accessible, composable UI components
