@@ -1,8 +1,26 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertWaitlistSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
+
+// Simple authentication middleware for admin endpoints
+function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
+  const authHeader = req.headers.authorization;
+  
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  const token = authHeader.substring(7);
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminPassword || token !== adminPassword) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  next();
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Waitlist signup endpoint
@@ -46,8 +64,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get all waitlist entries (for admin purposes)
-  app.get("/api/waitlist", async (req, res) => {
+  // Admin login endpoint
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { password } = req.body;
+      const adminPassword = process.env.ADMIN_PASSWORD;
+
+      if (!adminPassword || password !== adminPassword) {
+        return res.status(401).json({ error: "Invalid password" });
+      }
+
+      // Return the password as the token (simple auth for now)
+      res.json({ 
+        success: true,
+        token: adminPassword
+      });
+    } catch (error) {
+      console.error("Error during admin login:", error);
+      res.status(500).json({ 
+        error: "Login failed. Please try again." 
+      });
+    }
+  });
+
+  // Get all waitlist entries (for admin purposes) - protected
+  app.get("/api/waitlist", requireAdminAuth, async (req, res) => {
     try {
       const entries = await storage.getWaitlistEntries();
       res.json({ entries });
