@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Twitter } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Logo } from "./logo";
 
 export function Footer() {
@@ -18,26 +18,6 @@ export function Footer() {
                 </a>
               </p>
               <div className="flex gap-3">
-                <a
-                  href="https://linkedin.com/company/envis"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
-                  aria-label="LinkedIn"
-                  data-testid="link-linkedin"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://twitter.com/envis"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
-                  aria-label="Twitter"
-                  data-testid="link-twitter"
-                >
-                  <Twitter className="h-5 w-5" />
-                </a>
                 <a
                   href="mailto:hello@envis.money"
                   className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
