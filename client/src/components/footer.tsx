@@ -11,28 +11,42 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">
               The AI-powered financial coach for UK families.
             </p>
-            <div className="flex gap-3">
-              <button
-                className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
-                aria-label="LinkedIn"
-                data-testid="link-linkedin"
-              >
-                <Linkedin className="h-5 w-5" />
-              </button>
-              <button
-                className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
-                aria-label="Twitter"
-                data-testid="link-twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </button>
-              <button
-                className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
-                aria-label="Email"
-                data-testid="link-email"
-              >
-                <Mail className="h-5 w-5" />
-              </button>
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground">
+                <a href="mailto:hello@envis.money" className="hover:text-foreground transition-colors" data-testid="link-contact-email">
+                  hello@envis.money
+                </a>
+              </p>
+              <div className="flex gap-3">
+                <a
+                  href="https://linkedin.com/company/envis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
+                  aria-label="LinkedIn"
+                  data-testid="link-linkedin"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://twitter.com/envis"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
+                  aria-label="Twitter"
+                  data-testid="link-twitter"
+                >
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a
+                  href="mailto:hello@envis.money"
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
+                  aria-label="Email"
+                  data-testid="link-email"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -100,8 +114,18 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© 2025 Envis. All rights reserved. Envis is committed to FCA compliance and consumer protection.</p>
+        <div className="mt-12 pt-8 border-t space-y-4">
+          <div className="text-xs text-muted-foreground leading-relaxed max-w-5xl mx-auto">
+            <p className="mb-3">
+              <strong>Important Information:</strong> Envis uses Open Banking technology to provide financial guidance and automation. We operate under FCA-aligned principles and work with FCA-authorised Open Banking providers. The information provided by Envis is for general guidance only and should not be considered as financial advice. You should seek independent financial advice before making significant financial decisions.
+            </p>
+            <p>
+              Your capital and financial security are important. All data is encrypted using bank-level 256-bit encryption, and we only use read-only access to your accounts. We cannot move money or make changes to your accounts. You can disconnect your accounts and delete your data at any time. GDPR compliant and committed to protecting your privacy.
+            </p>
+          </div>
+          <div className="text-center text-sm text-muted-foreground border-t pt-4">
+            <p>© 2025 Envis. All rights reserved. Made with care for UK families.</p>
+          </div>
         </div>
       </div>
     </footer>

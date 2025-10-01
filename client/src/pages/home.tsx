@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Network, BrainCircuit, Signpost, Zap, Target, MessageCircle, Link2, UserPlus, Play, Building, EyeOff, ShieldCheck, Wallet, TrendingUp, CreditCard } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist-form";
+import { FAQSection } from "@/components/faq-section";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
@@ -80,7 +81,7 @@ export default function Home() {
 
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Shield className="h-5 w-5 text-primary" />
-                <span>FCA-compliant • Bank-level security • Your data stays private</span>
+                <span>FCA-aligned principles • Bank-level security • Your data stays private</span>
               </div>
             </div>
 
@@ -331,6 +332,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Final CTA / Waitlist Section */}
       <section id="waitlist" className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/10">
