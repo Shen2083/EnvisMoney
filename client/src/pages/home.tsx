@@ -87,64 +87,73 @@ export default function Home() {
 
             <div className="relative lg:pl-8">
               <div className="relative h-[400px] lg:h-[500px]" data-testid="hero-graphic">
-                {/* Abstract background shapes */}
-                <div className="absolute inset-0 overflow-hidden">
-                  <div className="absolute top-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-                  <div className="absolute bottom-10 left-10 w-48 h-48 bg-accent/20 rounded-full blur-3xl"></div>
+                {/* Modern gradient background */}
+                <div className="absolute inset-0 overflow-hidden opacity-60">
+                  <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-accent/15 to-transparent rounded-full blur-3xl" style={{ animationDelay: '1s' }}></div>
                 </div>
 
-                {/* Floating icon cards */}
-                <div className="relative h-full flex items-center justify-center">
+                {/* Connecting lines - more elegant */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-15" style={{ zIndex: 1 }}>
+                  <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                      <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+                      <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                    </linearGradient>
+                  </defs>
+                  <line x1="30%" y1="30%" x2="70%" y2="30%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
+                  <line x1="30%" y1="70%" x2="70%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
+                  <line x1="30%" y1="30%" x2="30%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
+                  <line x1="70%" y1="30%" x2="70%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
+                  <line x1="30%" y1="30%" x2="70%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1" strokeDasharray="6 6" opacity="0.4" />
+                  <line x1="70%" y1="30%" x2="30%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1" strokeDasharray="6 6" opacity="0.4" />
+                </svg>
+
+                {/* Modern floating icon cards */}
+                <div className="relative h-full flex items-center justify-center" style={{ zIndex: 2 }}>
                   <div className="grid grid-cols-2 gap-6 w-full max-w-md">
                     {/* Top left - Accounts */}
-                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform">
+                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '0ms', animationDuration: '600ms' }}>
                       <div className="flex flex-col items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Wallet className="h-6 w-6 text-primary" />
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
+                          <Wallet className="h-7 w-7 text-primary" />
                         </div>
-                        <span className="text-sm font-medium text-center">Connected Accounts</span>
+                        <span className="text-sm font-semibold text-center">Connected Accounts</span>
                       </div>
                     </Card>
 
                     {/* Top right - Savings */}
-                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform mt-8">
+                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 mt-8 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '150ms', animationDuration: '600ms' }}>
                       <div className="flex flex-col items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <PiggyBank className="h-6 w-6 text-primary" />
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
+                          <PiggyBank className="h-7 w-7 text-primary" />
                         </div>
-                        <span className="text-sm font-medium text-center">Smart Savings</span>
+                        <span className="text-sm font-semibold text-center">Smart Savings</span>
                       </div>
                     </Card>
 
                     {/* Bottom left - Goals */}
-                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform">
+                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '300ms', animationDuration: '600ms' }}>
                       <div className="flex flex-col items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Target className="h-6 w-6 text-primary" />
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
+                          <Target className="h-7 w-7 text-primary" />
                         </div>
-                        <span className="text-sm font-medium text-center">Family Goals</span>
+                        <span className="text-sm font-semibold text-center">Family Goals</span>
                       </div>
                     </Card>
 
                     {/* Bottom right - Growth */}
-                    <Card className="p-6 hover-elevate transform hover:-translate-y-1 transition-transform mt-8">
+                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 mt-8 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '450ms', animationDuration: '600ms' }}>
                       <div className="flex flex-col items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <TrendingUp className="h-6 w-6 text-primary" />
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
+                          <TrendingUp className="h-7 w-7 text-primary" />
                         </div>
-                        <span className="text-sm font-medium text-center">Smart Insights</span>
+                        <span className="text-sm font-semibold text-center">Smart Insights</span>
                       </div>
                     </Card>
                   </div>
                 </div>
-
-                {/* Connecting lines */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" style={{ zIndex: 0 }}>
-                  <line x1="30%" y1="30%" x2="70%" y2="30%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
-                  <line x1="30%" y1="70%" x2="70%" y2="70%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
-                  <line x1="30%" y1="30%" x2="30%" y2="70%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
-                  <line x1="70%" y1="30%" x2="70%" y2="70%" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="4 4" />
-                </svg>
               </div>
             </div>
           </div>
