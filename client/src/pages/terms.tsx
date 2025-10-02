@@ -259,7 +259,7 @@ export default function TermsOfService() {
                     These Terms are governed by the laws of England and Wales. Any disputes arising from these Terms or your use of the service shall be subject to the exclusive jurisdiction of the courts of England and Wales.
                   </p>
                   <p>
-                    <strong>Complaints:</strong> If you have a complaint about our service, please contact us first at <a href="mailto:hello@envis.money" className="text-primary hover:underline">hello@envis.money</a>. We are committed to resolving issues fairly and promptly.
+                    <strong>Complaints:</strong> If you have a complaint about our service, please contact us first at <a href="mailto:team@envis.money" className="text-primary hover:underline">team@envis.money</a>. We are committed to resolving issues fairly and promptly.
                   </p>
                 </div>
               </section>
@@ -282,7 +282,7 @@ export default function TermsOfService() {
                 </p>
                 <div className="text-muted-foreground">
                   <p><strong>Envis</strong></p>
-                  <p>Email: <a href="mailto:hello@envis.money" className="text-primary hover:underline" data-testid="link-contact-email-bottom">hello@envis.money</a></p>
+                  <p>Email: <a href="mailto:team@envis.money" className="text-primary hover:underline" data-testid="link-contact-email-bottom">team@envis.money</a></p>
                 </div>
               </section>
             </div>

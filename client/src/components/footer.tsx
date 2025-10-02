@@ -14,13 +14,13 @@ export function Footer() {
             </p>
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">
-                <a href="mailto:hello@envis.money" className="hover:text-foreground transition-colors" data-testid="link-contact-email">
-                  hello@envis.money
+                <a href="mailto:team@envis.money" className="hover:text-foreground transition-colors" data-testid="link-contact-email">
+                  team@envis.money
                 </a>
               </p>
               <div className="flex gap-3">
                 <a
-                  href="mailto:hello@envis.money"
+                  href="mailto:team@envis.money"
                   className="inline-flex items-center justify-center w-9 h-9 rounded-md hover-elevate"
                   aria-label="Email"
                   data-testid="link-email"

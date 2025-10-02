@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
                 </p>
                 <p className="text-muted-foreground">
                   <strong>Contact Details:</strong><br />
-                  Email: <a href="mailto:hello@envis.money" className="text-primary hover:underline" data-testid="link-contact-email-policy">hello@envis.money</a>
+                  Email: <a href="mailto:team@envis.money" className="text-primary hover:underline" data-testid="link-contact-email-policy">team@envis.money</a>
                 </p>
               </section>
 
@@ -184,7 +184,7 @@ export default function PrivacyPolicy() {
                   <li><strong>Withdraw Consent:</strong> Withdraw consent for marketing at any time</li>
                 </ul>
                 <p className="text-muted-foreground mt-3">
-                  To exercise any of these rights, please contact us at <a href="mailto:hello@envis.money" className="text-primary hover:underline">hello@envis.money</a>.
+                  To exercise any of these rights, please contact us at <a href="mailto:team@envis.money" className="text-primary hover:underline">team@envis.money</a>.
                 </p>
               </section>
 
@@ -254,7 +254,7 @@ export default function PrivacyPolicy() {
                 </p>
                 <div className="text-muted-foreground">
                   <p><strong>Envis</strong></p>
-                  <p>Email: <a href="mailto:hello@envis.money" className="text-primary hover:underline" data-testid="link-contact-email-bottom">hello@envis.money</a></p>
+                  <p>Email: <a href="mailto:team@envis.money" className="text-primary hover:underline" data-testid="link-contact-email-bottom">team@envis.money</a></p>
                 </div>
               </section>
             </div>
