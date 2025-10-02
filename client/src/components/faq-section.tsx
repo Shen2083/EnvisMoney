@@ -14,7 +14,7 @@ export function FAQSection() {
     },
     {
       question: "What is Open Banking and how does it work?",
-      answer: "Open Banking is a secure, regulated system that lets you safely share your financial data with authorised providers like Envis. We connect using read-only access, meaning we can see your transactions and balances but can never move money or make changes to your accounts. It's the same technology used by major UK banks and financial apps."
+      answer: "Open Banking is a secure, regulated system that lets you safely share your financial data with authorised providers like Envis. By default, we use read-only access, meaning we can see your transactions and balances but cannot move money. If you choose to enable features like automated transfers to savings, we'll ask for your explicit permission to use Payment Initiation Services (PIS). You're always in control."
     },
     {
       question: "How much does Envis cost?",
@@ -26,7 +26,7 @@ export function FAQSection() {
     },
     {
       question: "How is Envis different from other budgeting apps?",
-      answer: "Unlike traditional budgeting apps that just track spending, Envis is a proactive AI coach that takes action on your behalf. It automatically sweeps surplus cash to savings, prevents overdrafts before they happen, and provides personalised guidance for your family's unique goals. Think of it as a financial brain that works 24/7 for your family."
+      answer: "Unlike traditional budgeting apps that just track spending, Envis is a proactive intelligent coach that provides actionable recommendations for your family. It identifies surplus cash for savings, alerts you to prevent overdrafts before they happen, and provides personalised guidance for your unique goals. You can also enable optional automated actions (like transfers to savings) with your explicit permission. Think of it as a financial brain that works 24/7 for your family."
     },
     {
       question: "Can both partners access the same Envis account?",
