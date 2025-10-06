@@ -86,70 +86,78 @@ export default function Home() {
             </div>
 
             <div className="relative lg:pl-8">
-              <div className="relative h-[400px] lg:h-[500px]" data-testid="hero-graphic">
-                {/* Modern gradient background */}
-                <div className="absolute inset-0 overflow-hidden opacity-60">
-                  <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-accent/15 to-transparent rounded-full blur-3xl" style={{ animationDelay: '1s' }}></div>
+              <div className="relative h-[500px] lg:h-[550px]" data-testid="hero-graphic">
+                {/* Subtle gradient background */}
+                <div className="absolute inset-0 overflow-hidden opacity-40">
+                  <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
-                {/* Connecting lines - more elegant */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-15" style={{ zIndex: 1 }}>
+                {/* Modern vector connecting lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10" style={{ zIndex: 1 }}>
                   <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-                      <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
-                      <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+                      <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.7" />
+                      <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
                     </linearGradient>
                   </defs>
-                  <line x1="30%" y1="30%" x2="70%" y2="30%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
-                  <line x1="30%" y1="70%" x2="70%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
-                  <line x1="30%" y1="30%" x2="30%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
-                  <line x1="70%" y1="30%" x2="70%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1.5" strokeDasharray="6 6" />
-                  <line x1="30%" y1="30%" x2="70%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1" strokeDasharray="6 6" opacity="0.4" />
-                  <line x1="70%" y1="30%" x2="30%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1" strokeDasharray="6 6" opacity="0.4" />
+                  {/* Horizontal connections */}
+                  <line x1="25%" y1="35%" x2="75%" y2="35%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
+                    <animate attributeName="stroke-dashoffset" from="0" to="16" dur="20s" repeatCount="indefinite" />
+                  </line>
+                  <line x1="25%" y1="65%" x2="75%" y2="65%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
+                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="20s" repeatCount="indefinite" />
+                  </line>
+                  {/* Vertical connections */}
+                  <line x1="25%" y1="35%" x2="25%" y2="65%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
+                    <animate attributeName="stroke-dashoffset" from="0" to="16" dur="15s" repeatCount="indefinite" />
+                  </line>
+                  <line x1="75%" y1="35%" x2="75%" y2="65%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
+                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="15s" repeatCount="indefinite" />
+                  </line>
                 </svg>
 
-                {/* Modern floating icon cards */}
-                <div className="relative h-full flex items-center justify-center" style={{ zIndex: 2 }}>
-                  <div className="grid grid-cols-2 gap-6 w-full max-w-md">
-                    {/* Top left - Accounts */}
-                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '0ms', animationDuration: '600ms' }}>
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
-                          <Wallet className="h-7 w-7 text-primary" />
+                {/* Modern feature cards grid */}
+                <div className="relative h-full flex items-center justify-center px-4" style={{ zIndex: 2 }}>
+                  <div className="grid grid-cols-2 gap-5 w-full max-w-lg">
+                    {/* Connected Accounts */}
+                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '100ms', animationDuration: '700ms' }}>
+                      <div className="flex flex-col items-center gap-4">
+                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                          <Wallet className="h-8 w-8 text-primary" strokeWidth={2.5} />
                         </div>
-                        <span className="text-sm font-semibold text-center">Connected Accounts</span>
+                        <span className="text-sm font-semibold text-center leading-tight">Connected Accounts</span>
                       </div>
                     </Card>
 
-                    {/* Top right - Savings */}
-                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 mt-8 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '150ms', animationDuration: '600ms' }}>
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
-                          <PiggyBank className="h-7 w-7 text-primary" />
+                    {/* Automated Savings */}
+                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '250ms', animationDuration: '700ms' }}>
+                      <div className="flex flex-col items-center gap-4">
+                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                          <PiggyBank className="h-8 w-8 text-primary" strokeWidth={2.5} />
                         </div>
-                        <span className="text-sm font-semibold text-center">Automated Savings</span>
+                        <span className="text-sm font-semibold text-center leading-tight">Automated Savings</span>
                       </div>
                     </Card>
 
-                    {/* Bottom left - Goals */}
-                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '300ms', animationDuration: '600ms' }}>
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
-                          <Target className="h-7 w-7 text-primary" />
+                    {/* Family Goals */}
+                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '400ms', animationDuration: '700ms' }}>
+                      <div className="flex flex-col items-center gap-4">
+                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                          <Target className="h-8 w-8 text-primary" strokeWidth={2.5} />
                         </div>
-                        <span className="text-sm font-semibold text-center">Family Goals</span>
+                        <span className="text-sm font-semibold text-center leading-tight">Family Goals</span>
                       </div>
                     </Card>
 
-                    {/* Bottom right - Growth */}
-                    <Card className="group p-6 hover-elevate transition-all duration-300 backdrop-blur-sm bg-card/80 border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 mt-8 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '450ms', animationDuration: '600ms' }}>
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
-                          <TrendingUp className="h-7 w-7 text-primary" />
+                    {/* Helpful Insights */}
+                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '550ms', animationDuration: '700ms' }}>
+                      <div className="flex flex-col items-center gap-4">
+                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                          <TrendingUp className="h-8 w-8 text-primary" strokeWidth={2.5} />
                         </div>
-                        <span className="text-sm font-semibold text-center">Helpful Insights</span>
+                        <span className="text-sm font-semibold text-center leading-tight">Helpful Insights</span>
                       </div>
                     </Card>
                   </div>
