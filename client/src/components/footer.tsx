@@ -10,7 +10,7 @@ export function Footer() {
           <div className="space-y-4">
             <Logo />
             <p className="text-sm text-muted-foreground">
-              The AI-powered financial coach for UK families.
+              The proactive financial coach for UK families.
             </p>
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">

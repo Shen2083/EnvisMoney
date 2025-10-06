@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Network, BrainCircuit, Signpost, Zap, Target, MessageCircle, Link2, UserPlus, Play, Building, EyeOff, ShieldCheck, Wallet, TrendingUp, CreditCard } from "lucide-react";
+import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Network, AlertCircle, Signpost, Zap, Target, MessageCircle, Link2, UserPlus, Play, Building, EyeOff, ShieldCheck, Wallet, TrendingUp, CreditCard } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { FAQSection } from "@/components/faq-section";
 import { Footer } from "@/components/footer";
@@ -17,8 +17,8 @@ export default function Home() {
   const features = [
     {
       icon: Zap,
-      title: "Proactive Insights and Smart Actions",
-      description: "Envis doesn't just show you charts of past spending. It provides intelligent recommendations—identifying surplus cash for savings, preventing overdrafts, and alerting you to issues before they happen. You control which actions to enable: read-only insights or optional automated transfers with your explicit permission."
+      title: "Proactive Insights and Automated Actions",
+      description: "Envis doesn't just show you charts of past spending. It provides personalized recommendations—identifying surplus cash for savings, preventing overdrafts, and alerting you to issues before they happen. You control which actions to enable: read-only insights or optional automated transfers with your explicit permission."
     },
     {
       icon: Target,
@@ -65,7 +65,7 @@ export default function Home() {
                   Your Family's Financial Partner, Finally.
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  Envis is the intelligent financial coach that proactively coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
+                  Envis is the proactive financial coach that coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
                 </p>
               </div>
 
@@ -129,7 +129,7 @@ export default function Home() {
                         <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
                           <PiggyBank className="h-7 w-7 text-primary" />
                         </div>
-                        <span className="text-sm font-semibold text-center">Smart Savings</span>
+                        <span className="text-sm font-semibold text-center">Automated Savings</span>
                       </div>
                     </Card>
 
@@ -149,7 +149,7 @@ export default function Home() {
                         <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
                           <TrendingUp className="h-7 w-7 text-primary" />
                         </div>
-                        <span className="text-sm font-semibold text-center">Smart Insights</span>
+                        <span className="text-sm font-semibold text-center">Helpful Insights</span>
                       </div>
                     </Card>
                   </div>
@@ -182,7 +182,7 @@ export default function Home() {
 
             <div className="text-center space-y-4" data-testid="problem-worry">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                <BrainCircuit className="h-8 w-8" />
+                <AlertCircle className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold">Constant Worry</h3>
               <p className="text-muted-foreground">
@@ -208,7 +208,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Introducing Envis. Your Family's Financial Brain.
+              Introducing Envis. Your Family's Financial Guide.
             </h2>
           </div>
 
@@ -277,7 +277,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold">Let Envis Handle the Rest</h3>
               <p className="text-muted-foreground">
-                Envis gets to work, providing insights and smart recommendations to help you reach your goals faster.
+                Envis gets to work, providing insights and helpful recommendations to help you reach your goals faster.
               </p>
             </div>
           </div>

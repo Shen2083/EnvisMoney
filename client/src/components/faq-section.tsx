@@ -26,7 +26,7 @@ export function FAQSection() {
     },
     {
       question: "How is Envis different from other budgeting apps?",
-      answer: "Unlike traditional budgeting apps that just track spending, Envis is a proactive intelligent coach that provides actionable recommendations for your family. It identifies surplus cash for savings, alerts you to prevent overdrafts before they happen, and provides personalised guidance for your unique goals. You can also enable optional automated actions (like transfers to savings) with your explicit permission. Think of it as a financial brain that works 24/7 for your family."
+      answer: "Unlike traditional budgeting apps that just track spending, Envis is a proactive financial coach that provides actionable recommendations for your family. It identifies surplus cash for savings, alerts you to prevent overdrafts before they happen, and provides personalised guidance for your unique goals. You can also enable optional automated actions (like transfers to savings) with your explicit permission. Think of it as a financial partner that works 24/7 for your family."
     },
     {
       question: "Can both partners access the same Envis account?",
