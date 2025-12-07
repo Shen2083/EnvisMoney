@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, Lock, Shield } from "lucide-react";
 import { Link } from "wouter";
 import { Logo } from "./logo";
 
@@ -6,11 +6,11 @@ export function Footer() {
   return (
     <footer className="border-t bg-card/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid gap-8 sm:grid-cols-2 md:gap-12">
+        <div className="grid gap-8 sm:grid-cols-3 md:gap-12">
           <div className="space-y-4">
             <Logo />
             <p className="text-sm text-muted-foreground">
-              The proactive financial coach for UK families.
+              The relationship-first financial platform for UK couples.
             </p>
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">
@@ -46,6 +46,20 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">Security</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <Lock className="h-4 w-4 text-primary" />
+                <span>Bank-Level Encryption</span>
+              </li>
+              <li className="flex items-center gap-2 text-muted-foreground">
+                <Shield className="h-4 w-4 text-primary" />
+                <span>FCA-Aligned Principles</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div className="mt-12 pt-8 border-t space-y-4">
@@ -54,11 +68,11 @@ export function Footer() {
               <strong>Important Information:</strong> Envis uses Open Banking technology to provide financial guidance and automation. We operate under FCA-aligned principles and work with FCA-authorised Open Banking providers. The information provided by Envis is for general guidance only and should not be considered as financial advice. You should seek independent financial advice before making significant financial decisions.
             </p>
             <p>
-              Your capital and financial security are important. All data is encrypted using bank-level 256-bit encryption, and we only use read-only access to your accounts. We cannot move money or make changes to your accounts. You can disconnect your accounts and delete your data at any time. GDPR compliant and committed to protecting your privacy.
+              Your capital and financial security are important. All data is encrypted using bank-level 256-bit encryption, and we only use read-only access to your accounts by default. You can disconnect your accounts and delete your data at any time. GDPR compliant and committed to protecting your privacy.
             </p>
           </div>
           <div className="text-center text-sm text-muted-foreground border-t pt-4">
-            <p>© 2025 Envis. All rights reserved. Made with care for UK families.</p>
+            <p>© 2025 Envis. All rights reserved. Made with care for UK couples and families.</p>
           </div>
         </div>
       </div>

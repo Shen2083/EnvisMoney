@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Network, AlertCircle, Signpost, Zap, Target, MessageCircle, Link2, UserPlus, Play, Building, EyeOff, ShieldCheck, Wallet, TrendingUp, CreditCard } from "lucide-react";
+import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Scale, BarChart3, Compass, MessageCircle, Building, ShieldCheck, Wallet, TrendingUp, Sparkles } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { FAQSection } from "@/components/faq-section";
 import { Footer } from "@/components/footer";
@@ -14,21 +14,43 @@ export default function Home() {
     }
   };
 
-  const features = [
+  const scrollToHowItWorks = () => {
+    const element = document.getElementById("how-it-works");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const modules = [
     {
-      icon: Zap,
-      title: "Proactive Insights and Automated Actions",
-      description: "Envis doesn't just show you charts of past spending. It provides personalized recommendations—identifying surplus cash for savings, preventing overdrafts, and alerting you to issues before they happen. You control which actions to enable: read-only insights or optional automated transfers with your explicit permission."
+      icon: Wallet,
+      title: "Intelligent Accounting",
+      subtitle: "\"Mine, Yours, Ours.\"",
+      description: "Automatically structures money to ensure transparency while respecting individual autonomy. See the complete picture without losing your independence."
     },
     {
-      icon: Target,
-      title: "One Family, One Financial Plan",
-      description: "Connect all your accounts—personal, joint, and credit cards—into a single, dynamic plan. See how every transaction impacts your shared goals, like saving for a house or a dream holiday, in real-time."
+      icon: Scale,
+      title: "The Fairness Engine",
+      subtitle: "\"Value Invisible Labour.\"",
+      description: "A proprietary system that recognises non-monetary contributions like childcare and housework to calculate a truly fair contribution split."
+    },
+    {
+      icon: BarChart3,
+      title: "Blame-Free Progress Tracking",
+      subtitle: "\"Focus on Progress, Not Guilt.\"",
+      description: "Real-time, objective goal monitoring that removes the 'blame game' from missed targets. Track progress together without finger-pointing."
+    },
+    {
+      icon: Compass,
+      title: "Values Mediation",
+      subtitle: "\"Honour Your Differences.\"",
+      description: "Psychological modelling that helps Savers and Spenders find a middle ground without conflict. Your differences become strengths."
     },
     {
       icon: MessageCircle,
-      title: "Financial Guidance That Speaks Your Language",
-      description: "Forget spreadsheets. Just ask questions in plain English. \"How much can we spend on groceries this month?\" or \"Are we on track for the nursery fees?\" Get clear, simple answers instantly."
+      title: "Proactive Coaching",
+      subtitle: "\"Stop Fights Before They Start.\"",
+      description: "Intelligent coaching that detects conflict triggers and intervenes with neutral, de-escalating guidance. Prevention over cure."
     }
   ];
 
@@ -42,7 +64,7 @@ export default function Home() {
       title: "FCA-Aligned Principles"
     },
     {
-      icon: EyeOff,
+      icon: Shield,
       title: "Read-Only Access"
     },
     {
@@ -65,19 +87,30 @@ export default function Home() {
                   Your Family's Financial Partner, Finally.
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  Envis is the proactive financial coach that coordinates your goals, prevents financial stress, and builds collective wealth. So you can focus on what matters most.
+                  The first platform that manages the emotional and practical complexities of couple finance. Stop arguing about money and start building your future.
                 </p>
               </div>
 
-              <Button
-                size="lg"
-                onClick={scrollToWaitlist}
-                className="text-base gap-2"
-                data-testid="button-join-waitlist-hero"
-              >
-                Request Early Access
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  size="lg"
+                  onClick={scrollToWaitlist}
+                  className="text-base gap-2"
+                  data-testid="button-join-waitlist-hero"
+                >
+                  Join the Waiting List
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={scrollToHowItWorks}
+                  className="text-base gap-2"
+                  data-testid="button-see-how-it-works"
+                >
+                  See How It Works
+                </Button>
+              </div>
 
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Shield className="h-5 w-5 text-primary" />
@@ -118,48 +151,64 @@ export default function Home() {
                   </line>
                 </svg>
 
-                {/* Modern feature cards grid */}
+                {/* Modern feature cards grid - all 5 modules */}
                 <div className="relative h-full flex items-center justify-center px-4" style={{ zIndex: 2 }}>
-                  <div className="grid grid-cols-2 gap-5 w-full max-w-lg">
-                    {/* Connected Accounts */}
-                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '100ms', animationDuration: '700ms' }}>
-                      <div className="flex flex-col items-center gap-4">
-                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                          <Wallet className="h-8 w-8 text-primary" strokeWidth={2.5} />
+                  <div className="w-full max-w-xl space-y-4">
+                    {/* Top row - 3 cards */}
+                    <div className="grid grid-cols-3 gap-4">
+                      {/* Intelligent Accounting */}
+                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '100ms', animationDuration: '700ms' }}>
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                            <Wallet className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                          </div>
+                          <span className="text-xs font-semibold text-center leading-tight">Mine, Yours, Ours</span>
                         </div>
-                        <span className="text-sm font-semibold text-center leading-tight">Connected Accounts</span>
-                      </div>
-                    </Card>
+                      </Card>
 
-                    {/* Automated Savings */}
-                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '250ms', animationDuration: '700ms' }}>
-                      <div className="flex flex-col items-center gap-4">
-                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                          <PiggyBank className="h-8 w-8 text-primary" strokeWidth={2.5} />
+                      {/* Fairness Engine */}
+                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '200ms', animationDuration: '700ms' }}>
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                            <Scale className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                          </div>
+                          <span className="text-xs font-semibold text-center leading-tight">Fairness Engine</span>
                         </div>
-                        <span className="text-sm font-semibold text-center leading-tight">Automated Savings</span>
-                      </div>
-                    </Card>
+                      </Card>
 
-                    {/* Family Goals */}
-                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '400ms', animationDuration: '700ms' }}>
-                      <div className="flex flex-col items-center gap-4">
-                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                          <Target className="h-8 w-8 text-primary" strokeWidth={2.5} />
+                      {/* Blame-Free Tracking */}
+                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '300ms', animationDuration: '700ms' }}>
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                            <BarChart3 className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                          </div>
+                          <span className="text-xs font-semibold text-center leading-tight">Progress Tracking</span>
                         </div>
-                        <span className="text-sm font-semibold text-center leading-tight">Family Goals</span>
-                      </div>
-                    </Card>
+                      </Card>
+                    </div>
 
-                    {/* Helpful Insights */}
-                    <Card className="group p-7 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '550ms', animationDuration: '700ms' }}>
-                      <div className="flex flex-col items-center gap-4">
-                        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                          <TrendingUp className="h-8 w-8 text-primary" strokeWidth={2.5} />
+                    {/* Bottom row - 2 cards centered */}
+                    <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto">
+                      {/* Values Mediation */}
+                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '400ms', animationDuration: '700ms' }}>
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                            <Compass className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                          </div>
+                          <span className="text-xs font-semibold text-center leading-tight">Values Mediation</span>
                         </div>
-                        <span className="text-sm font-semibold text-center leading-tight">Helpful Insights</span>
-                      </div>
-                    </Card>
+                      </Card>
+
+                      {/* Proactive Coaching */}
+                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '500ms', animationDuration: '700ms' }}>
+                        <div className="flex flex-col items-center gap-3">
+                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
+                            <MessageCircle className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                          </div>
+                          <span className="text-xs font-semibold text-center leading-tight">Proactive Coaching</span>
+                        </div>
+                      </Card>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -168,159 +217,104 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Problem Section */}
+      {/* Problem Section - The Crisis */}
       <section className="py-16 md:py-24 bg-card/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Family finances are complicated. Your bank app isn't helping.
+              Why managing money together feels so hard.
             </h2>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center space-y-4" data-testid="problem-coordination">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                <Network className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold">Coordination Chaos</h3>
-              <p className="text-muted-foreground">
-                Juggling personal accounts, a joint account, and credit cards feels like a full-time job. It's impossible to see the complete picture.
+          <div className="grid gap-8 md:grid-cols-3 mb-12">
+            <Card className="p-8 text-center space-y-4 bg-card/80" data-testid="problem-shame">
+              <div className="text-5xl md:text-6xl font-bold text-primary mb-2">72%</div>
+              <p className="text-lg text-muted-foreground">
+                of couples experience shame or discomfort discussing money.
               </p>
-            </div>
+            </Card>
 
-            <div className="text-center space-y-4" data-testid="problem-worry">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                <AlertCircle className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold">Constant Worry</h3>
-              <p className="text-muted-foreground">
-                Are we saving enough? Did that bill get paid on time? The mental load of managing it all is exhausting and creates friction.
+            <Card className="p-8 text-center space-y-4 bg-card/80" data-testid="problem-stress">
+              <div className="text-5xl md:text-6xl font-bold text-primary mb-2">52%</div>
+              <p className="text-lg text-muted-foreground">
+                report financial stress damages their relationship.
               </p>
-            </div>
+            </Card>
 
-            <div className="text-center space-y-4" data-testid="problem-advice">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                <Signpost className="h-8 w-8" />
-              </div>
-              <h3 className="text-xl font-semibold">The Advice Gap</h3>
-              <p className="text-muted-foreground">
-                Professional financial advice is expensive and inaccessible. Who can you ask for simple, trustworthy guidance for your family's future?
+            <Card className="p-8 text-center space-y-4 bg-card/80" data-testid="problem-products">
+              <div className="text-5xl md:text-6xl font-bold text-primary mb-2">7-10</div>
+              <p className="text-lg text-muted-foreground">
+                different financial products couples juggle without a full-picture view.
               </p>
-            </div>
+            </Card>
+          </div>
+
+          <div className="text-center max-w-3xl mx-auto">
+            <Card className="p-8 bg-primary/5 border-primary/20">
+              <p className="text-lg font-medium">
+                <span className="text-primary font-semibold">The key insight:</span> Existing apps treat family finance as "individual finance times two." We treat you as a partnership.
+              </p>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Solution / Core Features Section */}
-      <section className="py-16 md:py-24">
+      {/* Solution / Core Modules Section */}
+      <section id="how-it-works" className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Introducing Envis. Your Family's Financial Guide.
+              Our Five Proprietary Modules
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Built specifically for couples, designed to eliminate financial conflict and invisible labour.
+            </p>
           </div>
 
-          <div className="space-y-24">
-            {features.map((feature, index) => (
-              <div
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {modules.map((module, index) => (
+              <Card
                 key={index}
-                className={`grid gap-12 lg:grid-cols-2 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-                data-testid={`feature-${index}`}
+                className="group p-8 hover-elevate transition-all duration-300 border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5"
+                data-testid={`module-${index}`}
               >
-                <div className={`space-y-6 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary">
-                    <feature.icon className="h-7 w-7" />
+                <div className="space-y-4">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 text-primary transition-all duration-300 group-hover:scale-110">
+                    <module.icon className="h-7 w-7" strokeWidth={2} />
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-semibold">{feature.title}</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {feature.description}
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">{module.title}</h3>
+                    <p className="text-primary font-medium text-sm mb-3">{module.subtitle}</p>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {module.description}
                   </p>
                 </div>
-                <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="relative rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 p-12 min-h-[300px] flex items-center justify-center">
-                    <feature.icon className="h-32 w-32 text-primary/20" />
-                  </div>
-                </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Social Proof / Validation Section */}
       <section className="py-16 md:py-24 bg-card/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Get Started in Minutes
+              Backed by Science & Research
             </h2>
           </div>
 
-          <div className="grid gap-12 md:grid-cols-3">
-            <div className="text-center space-y-4" data-testid="step-1">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">
-                1
+          <div className="max-w-3xl mx-auto">
+            <Card className="p-8 md:p-12 text-center space-y-6 bg-card">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+                <Sparkles className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold">Securely Connect Your Accounts</h3>
-              <p className="text-muted-foreground">
-                Using Open Banking technology, link your accounts in seconds with bank-level security.
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                Our system is grounded in <span className="text-foreground font-medium">peer-reviewed behavioural science</span> and validated by primary research with <span className="text-foreground font-medium">100+ UK families</span>. We're building on decades of relationship psychology research to create something genuinely new.
               </p>
-            </div>
-
-            <div className="text-center space-y-4" data-testid="step-2">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-semibold">Define Your Family's Goals</h3>
-              <p className="text-muted-foreground">
-                Tell Envis what you're saving for, from a new car to your children's future.
-              </p>
-            </div>
-
-            <div className="text-center space-y-4" data-testid="step-3">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-semibold">Let Envis Handle the Rest</h3>
-              <p className="text-muted-foreground">
-                Envis gets to work, providing insights and helpful recommendations to help you reach your goals faster.
-              </p>
-            </div>
+            </Card>
           </div>
-        </div>
-      </section>
-
-      {/* Social Proof / Data Section */}
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Built to Reduce Stress and Save Money.
-            </h2>
-          </div>
-
-          <div className="grid gap-12 md:grid-cols-3">
-            <div className="text-center space-y-4" data-testid="stat-stress">
-              <div className="text-6xl md:text-7xl font-bold text-primary mb-2">85%</div>
-              <p className="text-lg font-medium">Reduction in Financial Stress</p>
-            </div>
-
-            <div className="text-center space-y-4" data-testid="stat-fees">
-              <div className="text-6xl md:text-7xl font-bold text-primary mb-2">92%</div>
-              <p className="text-lg font-medium">Avoidance of Late Fees</p>
-            </div>
-
-            <div className="text-center space-y-4" data-testid="stat-savings">
-              <div className="text-6xl md:text-7xl font-bold text-primary mb-2">22%</div>
-              <p className="text-lg font-medium">Increase in Monthly Savings</p>
-            </div>
-          </div>
-
-          <p className="text-center text-sm text-muted-foreground mt-8">
-            Based on pilot program user data.
-          </p>
         </div>
       </section>
 
@@ -329,7 +323,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Your Security is Our Priority.
+              Your Security is Our Priority
             </h2>
           </div>
 
@@ -358,10 +352,10 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              Ready to Outsmart Money, Together?
+              Ready to Transform Your Relationship with Money?
             </h2>
             <p className="text-lg text-muted-foreground">
-              Be the first to experience the future of family finance. Join the waitlist for exclusive early access to Envis.
+              Be among the first to experience the future of couple finance. Join the waiting list for exclusive early access to Envis.
             </p>
           </div>
 

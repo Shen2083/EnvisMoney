@@ -18,7 +18,7 @@ export function FAQSection() {
     },
     {
       question: "How much does Envis cost?",
-      answer: "We're currently in our early access phase and finalising our pricing structure. Join our waitlist to be among the first to know when we launch and receive exclusive early access pricing. We're committed to making Envis accessible and affordable for all UK families."
+      answer: "We're currently in our early access phase and finalising our pricing structure. Join our waiting list to be among the first to know when we launch and receive exclusive early access pricing. We're committed to making Envis accessible and affordable for all UK families."
     },
     {
       question: "Which banks and accounts can I connect?",
@@ -26,19 +26,19 @@ export function FAQSection() {
     },
     {
       question: "How is Envis different from other budgeting apps?",
-      answer: "Unlike traditional budgeting apps that just track spending, Envis is a proactive financial coach that provides actionable recommendations for your family. It identifies surplus cash for savings, alerts you to prevent overdrafts before they happen, and provides personalised guidance for your unique goals. You can also enable optional automated actions (like transfers to savings) with your explicit permission. Think of it as a financial partner that works 24/7 for your family."
+      answer: "Unlike traditional budgeting apps that treat family finance as 'individual finance times two', Envis is built specifically for couples and families. We focus on the relationship dynamics—recognising invisible labour, mediating different spending styles, and preventing money conflicts before they start. It's the first financial tool built to strengthen your partnership, not just track your spending."
     },
     {
       question: "Can both partners access the same Envis account?",
-      answer: "Yes! Envis is designed for families. You can both access the same account, see all connected accounts (personal and joint), and work together towards shared financial goals. It's the first financial tool built specifically for couples and families to manage money together."
+      answer: "Absolutely! Envis is designed for couples and families. Both partners can access the same account, see all connected accounts (personal and joint), and work together towards shared financial goals. Our Fairness Engine ensures both partners feel heard and valued."
+    },
+    {
+      question: "What is the Fairness Engine?",
+      answer: "The Fairness Engine is our proprietary system that recognises non-monetary contributions to the household—like childcare, cooking, and managing the home. It helps calculate a truly fair contribution split that values invisible labour, so both partners feel the financial arrangement is equitable."
     },
     {
       question: "What happens to my data if I stop using Envis?",
       answer: "You're always in control of your data. If you decide to stop using Envis, you can disconnect your accounts at any time and request complete deletion of your data. We'll remove all your information from our systems within 30 days, in full compliance with GDPR regulations."
-    },
-    {
-      question: "Is Envis regulated by the FCA?",
-      answer: "We operate under FCA-aligned principles and use regulated Open Banking infrastructure for all account connections. We work with FCA-authorised Open Banking providers to ensure your data is handled with the highest standards of security and compliance."
     }
   ];
 
