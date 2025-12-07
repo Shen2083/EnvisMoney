@@ -1,0 +1,67 @@
+I need you to update the envis.money landing page to reflect our finalized business plan. We are building a "relationship-first" fintech product.
+
+1. Project Context & Brand Identity
+
+Product Name: Envis
+
+Tagline: "Your Family's Financial Partner, Finally."
+
+Core Value Prop: The first AI-powered personal finance platform built specifically for couples, designed to eliminate financial conflict and invisible labor.
+
+Brand Archetype: "The Sage & The Caregiver." The tone should be warm, intelligent, judgment-free, and empowering.
+
+Visual Style: Clean, modern, and approachable. Use calming colors (blues and greens) to signal trust and stability. Avoid cold, corporate finance aesthetics.
+
+2. Page Structure & Copy Requirements Please refactor the landing page to include the following sections in this order:
+
+A. Hero Section
+
+Headline: "Your Family's Financial Partner, Finally."
+
+Sub-headline: "The first AI-powered platform that manages the emotional and practical complexities of couple finance. Stop arguing about money and start building your future."
+
+CTA Button: "Join the Waiting List" (Primary), "See How It Works" (Secondary).
+
+B. The "Problem" Section (The Crisis)
+
+Header: "Why managing money together feels so hard."
+
+Data points to display:
+
+"72% of couples experience shame or discomfort discussing money."
+
+"52% report financial stress damages their relationship."
+
+"Couples manage 7-10 different financial products without a full-picture view."
+
+Key Insight: Existing apps treat family finance as "individual finance times two." We treat you as a partnership.
+
+C. The "Solution" Section (Our Proprietary Modules) Create feature blocks/cards for our 5 core modules:
+
+Intelligent Accounting: "Mine, Yours, Ours." Automatically structures money to ensure transparency while respecting individual autonomy.
+
+The Fairness Engine: "Value Invisible Labor." A proprietary algorithm that recognizes non-monetary contributions (like childcare and housework) to calculate a truly fair contribution split.
+
+Blame-Free Progress Tracking: "Focus on Progress, Not Guilt." Real-time, objective goal monitoring that removes the 'blame game' from missed targets.
+
+Values Mediation: "Honor Your Differences." Psychological modeling that helps Savers and Spenders find a middle ground without conflict.
+
+Proactive AI Coaching: "Stop Fights Before They Start." An AI that detects conflict triggers and intervenes with neutral, de-escalating guidance.
+
+D. Social Proof / Validation
+
+Header: "Backed by Science & Research."
+
+Content: Mention that the system is grounded in peer-reviewed behavioural science and validated by primary research with 100+ UK families.
+
+E. Footer
+
+Includes links to "Privacy," "Security" (Mention Bank-Level Encryption), and contact info: vshenbagaraja@gmail.com.
+
+3. Technical Instructions
+
+Use a mobile-first responsive design (Tailwind CSS preferred).
+
+Ensure the "Join Waiting List" CTA is prominent and sticks as the user scrolls.
+
+Use high-quality, abstract illustrations or icons for the 5 modules (avoid generic stock photos of people shaking hands).
