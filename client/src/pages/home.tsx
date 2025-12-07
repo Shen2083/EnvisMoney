@@ -126,89 +126,102 @@ export default function Home() {
                   <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl"></div>
                 </div>
 
-                {/* Modern vector connecting lines */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-10" style={{ zIndex: 1 }}>
-                  <defs>
-                    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
-                      <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.7" />
-                      <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
-                    </linearGradient>
-                  </defs>
-                  {/* Horizontal connections */}
-                  <line x1="25%" y1="35%" x2="75%" y2="35%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
-                    <animate attributeName="stroke-dashoffset" from="0" to="16" dur="20s" repeatCount="indefinite" />
-                  </line>
-                  <line x1="25%" y1="65%" x2="75%" y2="65%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
-                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="20s" repeatCount="indefinite" />
-                  </line>
-                  {/* Vertical connections */}
-                  <line x1="25%" y1="35%" x2="25%" y2="65%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
-                    <animate attributeName="stroke-dashoffset" from="0" to="16" dur="15s" repeatCount="indefinite" />
-                  </line>
-                  <line x1="75%" y1="35%" x2="75%" y2="65%" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="8 8">
-                    <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="15s" repeatCount="indefinite" />
-                  </line>
-                </svg>
-
-                {/* Modern feature cards grid - all 5 modules */}
+                {/* Diamond-style module arrangement */}
                 <div className="relative h-full flex items-center justify-center px-4" style={{ zIndex: 2 }}>
-                  <div className="w-full max-w-xl space-y-4">
-                    {/* Top row - 3 cards */}
-                    <div className="grid grid-cols-3 gap-4">
-                      {/* Intelligent Accounting */}
-                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '100ms', animationDuration: '700ms' }}>
-                        <div className="flex flex-col items-center gap-3">
-                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                            <Wallet className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                  <div className="relative w-full max-w-md h-80">
+                    {/* Top card - centered */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 animate-in fade-in slide-in-from-top-4" style={{ animationDelay: '100ms', animationDuration: '600ms' }}>
+                      <Card className="group p-4 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+                        <div className="flex flex-col items-center gap-2 w-24">
+                          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/25 via-primary/15 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-md shadow-primary/10">
+                            <Scale className="h-5 w-5 text-primary" strokeWidth={2.5} />
                           </div>
-                          <span className="text-xs font-semibold text-center leading-tight">Mine, Yours, Ours</span>
-                        </div>
-                      </Card>
-
-                      {/* Fairness Engine */}
-                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '200ms', animationDuration: '700ms' }}>
-                        <div className="flex flex-col items-center gap-3">
-                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                            <Scale className="h-6 w-6 text-primary" strokeWidth={2.5} />
-                          </div>
-                          <span className="text-xs font-semibold text-center leading-tight">Fairness Engine</span>
-                        </div>
-                      </Card>
-
-                      {/* Blame-Free Tracking */}
-                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '300ms', animationDuration: '700ms' }}>
-                        <div className="flex flex-col items-center gap-3">
-                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                            <BarChart3 className="h-6 w-6 text-primary" strokeWidth={2.5} />
-                          </div>
-                          <span className="text-xs font-semibold text-center leading-tight">Progress Tracking</span>
+                          <span className="text-[11px] font-semibold text-center leading-tight">Fairness Engine</span>
                         </div>
                       </Card>
                     </div>
 
-                    {/* Bottom row - 2 cards centered */}
-                    <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto">
-                      {/* Values Mediation */}
-                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '400ms', animationDuration: '700ms' }}>
-                        <div className="flex flex-col items-center gap-3">
-                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                            <Compass className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                    {/* Middle row - 3 cards evenly spaced */}
+                    <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between items-center px-2">
+                      {/* Left card */}
+                      <div className="animate-in fade-in slide-in-from-left-4" style={{ animationDelay: '200ms', animationDuration: '600ms' }}>
+                        <Card className="group p-4 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+                          <div className="flex flex-col items-center gap-2 w-24">
+                            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/25 via-primary/15 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-md shadow-primary/10">
+                              <Wallet className="h-5 w-5 text-primary" strokeWidth={2.5} />
+                            </div>
+                            <span className="text-[11px] font-semibold text-center leading-tight">Mine, Yours, Ours</span>
                           </div>
-                          <span className="text-xs font-semibold text-center leading-tight">Values Mediation</span>
-                        </div>
-                      </Card>
+                        </Card>
+                      </div>
 
-                      {/* Proactive Coaching */}
-                      <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 animate-in fade-in slide-in-from-bottom-8" style={{ animationDelay: '500ms', animationDuration: '700ms' }}>
-                        <div className="flex flex-col items-center gap-3">
-                          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-primary/10">
-                            <MessageCircle className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                      {/* Center card - slightly larger, emphasized */}
+                      <div className="animate-in fade-in zoom-in-95" style={{ animationDelay: '300ms', animationDuration: '600ms' }}>
+                        <Card className="group p-5 hover-elevate active-elevate-2 transition-all duration-500 bg-gradient-to-br from-primary/5 to-card/95 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/15 ring-4 ring-primary/5">
+                          <div className="flex flex-col items-center gap-2 w-28">
+                            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg shadow-primary/20">
+                              <BarChart3 className="h-7 w-7 text-primary" strokeWidth={2.5} />
+                            </div>
+                            <span className="text-xs font-semibold text-center leading-tight">Progress Tracking</span>
                           </div>
-                          <span className="text-xs font-semibold text-center leading-tight">Proactive Coaching</span>
+                        </Card>
+                      </div>
+
+                      {/* Right card */}
+                      <div className="animate-in fade-in slide-in-from-right-4" style={{ animationDelay: '400ms', animationDuration: '600ms' }}>
+                        <Card className="group p-4 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+                          <div className="flex flex-col items-center gap-2 w-24">
+                            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/25 via-primary/15 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-md shadow-primary/10">
+                              <Compass className="h-5 w-5 text-primary" strokeWidth={2.5} />
+                            </div>
+                            <span className="text-[11px] font-semibold text-center leading-tight">Values Mediation</span>
+                          </div>
+                        </Card>
+                      </div>
+                    </div>
+
+                    {/* Bottom card - centered */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: '500ms', animationDuration: '600ms' }}>
+                      <Card className="group p-4 hover-elevate active-elevate-2 transition-all duration-500 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
+                        <div className="flex flex-col items-center gap-2 w-24">
+                          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/25 via-primary/15 to-primary/5 flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-md shadow-primary/10">
+                            <MessageCircle className="h-5 w-5 text-primary" strokeWidth={2.5} />
+                          </div>
+                          <span className="text-[11px] font-semibold text-center leading-tight">Proactive Coaching</span>
                         </div>
                       </Card>
                     </div>
+
+                    {/* Decorative connecting lines */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: -1 }}>
+                      <defs>
+                        <linearGradient id="connectGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+                          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+                          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+                        </linearGradient>
+                      </defs>
+                      {/* Diamond connecting lines */}
+                      <line x1="50%" y1="15%" x2="15%" y2="50%" stroke="url(#connectGrad)" strokeWidth="1.5" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="8" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="50%" y1="15%" x2="85%" y2="50%" stroke="url(#connectGrad)" strokeWidth="1.5" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="15%" y1="50%" x2="50%" y2="85%" stroke="url(#connectGrad)" strokeWidth="1.5" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="8" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="85%" y1="50%" x2="50%" y2="85%" stroke="url(#connectGrad)" strokeWidth="1.5" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="3s" repeatCount="indefinite" />
+                      </line>
+                      {/* Center connections */}
+                      <line x1="50%" y1="15%" x2="50%" y2="50%" stroke="url(#connectGrad)" strokeWidth="1.5" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="8" dur="2.5s" repeatCount="indefinite" />
+                      </line>
+                      <line x1="50%" y1="50%" x2="50%" y2="85%" stroke="url(#connectGrad)" strokeWidth="1.5" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="2.5s" repeatCount="indefinite" />
+                      </line>
+                    </svg>
                   </div>
                 </div>
               </div>
