@@ -8,6 +8,8 @@ import PrivacyPolicy from "@/pages/privacy";
 import TermsOfService from "@/pages/terms";
 import AdminLogin from "@/pages/admin-login";
 import AdminDashboard from "@/pages/admin";
+import PricingPage from "@/pages/pricing";
+import CheckoutSuccessPage from "@/pages/checkout-success";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -18,6 +20,8 @@ function Router() {
       <Route path="/terms" component={TermsOfService} />
       <Route path="/admin-login" component={AdminLogin} />
       <Route path="/admin" component={AdminDashboard} />
+      <Route path="/pricing" component={PricingPage} />
+      <Route path="/checkout/success" component={CheckoutSuccessPage} />
       <Route component={NotFound} />
     </Switch>
   );

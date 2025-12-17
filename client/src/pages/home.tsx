@@ -1,10 +1,11 @@
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Scale, BarChart3, Compass, MessageCircle, Building, ShieldCheck, Wallet, TrendingUp, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Scale, BarChart3, Compass, MessageCircle, Building, ShieldCheck, Wallet, TrendingUp, Sparkles, CreditCard } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { FAQSection } from "@/components/faq-section";
 import { Footer } from "@/components/footer";
+import { Link } from "wouter";
 
 export default function Home() {
   const scrollToWaitlist = () => {
@@ -101,15 +102,17 @@ export default function Home() {
                   Join the Waiting List
                   <ArrowRight className="h-5 w-5" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={scrollToHowItWorks}
-                  className="text-base gap-2"
-                  data-testid="button-see-how-it-works"
-                >
-                  See How It Works
-                </Button>
+                <Link href="/pricing">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-base gap-2"
+                    data-testid="button-preorder-hero"
+                  >
+                    <CreditCard className="h-5 w-5" />
+                    Pre-Order Now
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
