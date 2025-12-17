@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { Logo } from "./logo";
+import { Link } from "wouter";
 
 export function Navigation() {
   const scrollToSection = (id: string) => {
@@ -18,6 +19,11 @@ export function Navigation() {
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
+            <Link href="/pricing">
+              <Button variant="outline" data-testid="button-preorder-nav">
+                Pre-order
+              </Button>
+            </Link>
             <Button
               onClick={() => scrollToSection("waitlist")}
               data-testid="button-join-waitlist-nav"
