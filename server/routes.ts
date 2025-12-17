@@ -172,7 +172,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const stripe = await getUncachableStripeClient();
-      const baseUrl = `https://${process.env.REPLIT_DOMAINS?.split(',')[0]}`;
+      
+      // Derive base URL from request origin or REPLIT_DOMAINS
+      const replitDomain = process.env.REPLIT_DOMAINS?.split(',')[0];
+      const origin = req.headers.origin || req.headers.referer;
+      const baseUrl = replitDomain 
+        ? `https://${replitDomain}` 
+        : origin 
+          ? origin.replace(/\/$/, '') 
+          : `${req.protocol}://${req.get('host')}`;
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -187,9 +195,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       res.json({ url: session.url });
-    } catch (error) {
-      console.error("Error creating checkout session:", error);
-      res.status(500).json({ error: "Failed to create checkout session" });
+    } catch (error: any) {
+      console.error("Error creating checkout session:", error?.message || error);
+      res.status(500).json({ 
+        error: "Failed to create checkout session",
+        details: process.env.NODE_ENV === 'development' ? error?.message : undefined
+      });
     }
   });
 
