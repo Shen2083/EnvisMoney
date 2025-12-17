@@ -20,22 +20,31 @@ interface Product {
   prices: Price[];
 }
 
-const planFeatures: Record<string, string[]> = {
-  family: [
-    "Mine, Yours, Ours categorisation",
-    "Fairness Engine for equitable contributions",
-    "Blame-Free Progress Tracking",
-    "Secure Open Banking connection",
-    "Monthly financial health reports",
-  ],
-  family_plus: [
-    "Everything in Family plan",
-    "Values Mediation for aligned priorities",
-    "Proactive Coaching recommendations",
-    "Advanced goal planning tools",
-    "Priority support",
-    "Early access to new features",
-  ],
+const planFeatures: Record<string, { accounts: string; features: string[]; support: string }> = {
+  family: {
+    accounts: "Up to 5 bank accounts",
+    features: [
+      "Budget tracking",
+      "Spending insights",
+      "Custom savings goals",
+      "Advanced analytics",
+      "Cancel any time",
+    ],
+    support: "Email & Chat support",
+  },
+  family_plus: {
+    accounts: "Unlimited bank accounts",
+    features: [
+      "All Family features plus:",
+      "Intelligent coaching",
+      "Automatic savings optimisation",
+      "Overdraft prevention",
+      "Shared goal tracking",
+      "Bill-payment predictions",
+      "Real-time spending notifications",
+    ],
+    support: "Priority chat and onboarding",
+  },
 };
 
 function formatPrice(amount: number, currency: string): string {
@@ -127,7 +136,7 @@ export default function PricingPage() {
           {sortedProducts.map((product, index) => {
             const price = product.prices[0];
             const tier = product.metadata?.tier || (index === 0 ? 'family' : 'family_plus');
-            const features = planFeatures[tier] || planFeatures.family;
+            const planInfo = planFeatures[tier] || planFeatures.family;
             const isPopular = tier === 'family_plus';
 
             return (
@@ -146,7 +155,6 @@ export default function PricingPage() {
 
                 <div className="text-center mb-6">
                   <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
-                  <p className="text-muted-foreground text-sm mb-4">{product.description}</p>
                   
                   {price && (
                     <div className="mb-4">
@@ -156,16 +164,24 @@ export default function PricingPage() {
                       <span className="text-muted-foreground">/month</span>
                     </div>
                   )}
+
+                  <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+                    {planInfo.accounts}
+                  </div>
                 </div>
 
-                <ul className="space-y-3 mb-8">
-                  {features.map((feature, idx) => (
+                <ul className="space-y-3 mb-6">
+                  {planInfo.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                       <span className="text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
+
+                <div className="text-center text-sm text-muted-foreground mb-6 pb-6 border-b">
+                  {planInfo.support}
+                </div>
 
                 <Button 
                   className="w-full" 
