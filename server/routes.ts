@@ -117,20 +117,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get available subscription products/prices
   app.get("/api/products", async (req, res) => {
     try {
+      // Get only the most recent product for each tier to avoid duplicates
       const result = await db.execute(
-        sql`SELECT 
-          p.id as product_id,
-          p.name as product_name,
-          p.description as product_description,
-          p.metadata as product_metadata,
-          pr.id as price_id,
-          pr.unit_amount,
-          pr.currency,
-          pr.recurring
-        FROM stripe.products p
-        LEFT JOIN stripe.prices pr ON pr.product = p.id AND pr.active = true
-        WHERE p.active = true
-        ORDER BY pr.unit_amount ASC`
+        sql`WITH ranked_products AS (
+          SELECT 
+            p.id as product_id,
+            p.name as product_name,
+            p.description as product_description,
+            p.metadata as product_metadata,
+            p.created as product_created,
+            pr.id as price_id,
+            pr.unit_amount,
+            pr.currency,
+            pr.recurring,
+            ROW_NUMBER() OVER (
+              PARTITION BY p.metadata->>'tier' 
+              ORDER BY p.created DESC
+            ) as rn
+          FROM stripe.products p
+          LEFT JOIN stripe.prices pr ON pr.product = p.id AND pr.active = true
+          WHERE p.active = true AND p.metadata->>'tier' IS NOT NULL
+        )
+        SELECT * FROM ranked_products WHERE rn = 1
+        ORDER BY unit_amount ASC`
       );
       
       // Group by product
