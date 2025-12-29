@@ -174,13 +174,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Create checkout session for pre-order
   app.post("/api/checkout", async (req, res) => {
     try {
-      const { priceId, email } = req.body;
+      const { planId, priceId, email } = req.body;
       
-      if (!priceId) {
-        return res.status(400).json({ error: "Price ID is required" });
-      }
-
-      const stripe = await getUncachableStripeClient();
+      const stripe = getUncachableStripeClient();
       
       // Derive base URL from request origin or REPLIT_DOMAINS
       const replitDomain = process.env.REPLIT_DOMAINS?.split(',')[0];
@@ -191,15 +187,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
           ? origin.replace(/\/$/, '') 
           : `${req.protocol}://${req.get('host')}`;
 
+      let checkoutPriceId = priceId;
+
+      // Handle new billing frequency-based pricing by looking up from local synced data
+      if (planId && !priceId) {
+        // Query local database for synced product/price by billing metadata
+        const result = await db.execute(
+          sql`SELECT pr.id as price_id
+              FROM stripe.products p
+              JOIN stripe.prices pr ON pr.product = p.id AND pr.active = true
+              WHERE p.active = true 
+                AND p.metadata->>'billing' = ${planId}
+              LIMIT 1`
+        );
+        
+        if (!result.rows.length) {
+          return res.status(400).json({ 
+            error: "Plan not found. Please run the billing products seed script and restart the server." 
+          });
+        }
+        
+        checkoutPriceId = (result.rows[0] as any).price_id;
+      }
+
+      if (!checkoutPriceId) {
+        return res.status(400).json({ error: "Plan ID or Price ID is required" });
+      }
+
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
-        line_items: [{ price: priceId, quantity: 1 }],
+        line_items: [{ price: checkoutPriceId, quantity: 1 }],
         mode: 'subscription',
         success_url: `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/pricing`,
         customer_email: email || undefined,
         metadata: {
           source: 'pre-order',
+          plan: planId || 'legacy',
         },
       });
 

@@ -10,9 +10,16 @@ The landing page is designed as a multi-page application built with React, featu
 
 Preferred communication style: Simple, everyday language.
 
-## Recent Updates & User Feedback (October 2025)
+## Recent Updates & User Feedback
 
-### Messaging Clarifications:
+### Pricing Restructure (December 2025):
+- **Billing Frequency Model:** Changed from tier-based (Family vs Family Plus) to billing frequency-based (Monthly vs Annual)
+- **New Pricing:** Monthly £13.49/month, Annual £134.99/year (17% savings)
+- **Unified Features:** All subscribers get the complete feature set including Fairness Engine™, Mine/Yours/Ours sorting, AI coaching, and unlimited accounts
+- **Hero Messaging Updated:** New tagline focusing on couples and invisible labour recognition
+- **Stripe Products:** Monthly and Annual products seeded with `server/seed-billing-products.ts`
+
+### Messaging Clarifications (October 2025):
 - **Read-Only Access Clarification:** Updated homepage to clearly explain that Envis operates with read-only access by default for insights and recommendations. Money movement features (like automated transfers to savings) require separate explicit permission for Payment Initiation Services (PIS). This resolves the apparent contradiction between "read-only access" and "sweeping surplus cash to savings."
 - **Reduced "AI" Buzzword:** Softened AI language throughout the site, changing "AI-powered" to "intelligent" and removing unnecessary "AI" mentions. Focus is now on what the product does, not the underlying technology.
 

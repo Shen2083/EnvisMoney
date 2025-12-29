@@ -22,7 +22,7 @@ export function HeroSection() {
                 <span className="block">Simplified</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                The AI-powered financial coach helping UK families reduce stress, avoid late fees, and achieve their financial goals together.
+                The first AI financial partner built for couples. Move beyond the 50/50 split with a system that recognises invisible labour, mediates spending values, and stops money arguments before they start.
               </p>
             </div>
 

@@ -1,67 +1,64 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Check, Shield, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "wouter";
 
-interface Price {
-  id: string;
-  unit_amount: number;
-  currency: string;
-  recurring: { interval: string } | null;
-}
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  metadata: { tier?: string; features?: string } | null;
-  prices: Price[];
-}
-
-const planFeatures: Record<string, { accounts: string; features: string[]; support: string }> = {
-  family: {
-    accounts: "Up to 5 bank accounts",
-    features: [
-      "Budget tracking",
-      "Spending insights",
-      "Custom savings goals",
-      "Advanced analytics",
-      "Cancel any time",
-    ],
-    support: "Email & Chat support",
+const unifiedFeatures = [
+  {
+    title: "Unlimited Account Connections",
+    description: "Connect personal, joint, and savings accounts for a full family view",
   },
-  family_plus: {
-    accounts: "Unlimited bank accounts",
-    features: [
-      "All Family features plus:",
-      "Intelligent coaching",
-      "Automatic savings optimisation",
-      "Overdraft prevention",
-      "Shared goal tracking",
-      "Bill-payment predictions",
-      "Real-time spending notifications",
-    ],
-    support: "Priority chat and onboarding",
+  {
+    title: "Intelligent \"Mine/Yours/Ours\" Sorting",
+    description: "Automatically organise finances while maintaining individual privacy",
   },
-};
+  {
+    title: "The Fairness Engine™",
+    description: "Calculate fair contributions that value invisible labour (like childcare) alongside income",
+  },
+  {
+    title: "Proactive AI Coaching",
+    description: "Get neutral, real-time guidance to resolve conflicts before they start",
+  },
+  {
+    title: "Blame-Free Progress Tracking",
+    description: "Track shared goals (like house deposits) objectively without judgement",
+  },
+  {
+    title: "Bank-Level Security",
+    description: "Secure, read-only access via Open Banking with end-to-end encryption",
+  },
+];
 
-function formatPrice(amount: number, currency: string): string {
-  return new Intl.NumberFormat('en-GB', {
-    style: 'currency',
-    currency: currency.toUpperCase(),
-  }).format(amount / 100);
-}
+const pricingPlans = [
+  {
+    id: "monthly",
+    name: "Monthly",
+    price: 13.49,
+    period: "/month",
+    subtext: "Flexible, cancel anytime.",
+    buttonText: "Start Monthly",
+    isPopular: false,
+    interval: "month",
+  },
+  {
+    id: "annual",
+    name: "Annual",
+    price: 134.99,
+    period: "/year",
+    subtext: "Save 17% (Pay once a year).",
+    buttonText: "Start Annual",
+    isPopular: true,
+    interval: "year",
+  },
+];
 
 export default function PricingPage() {
-  const { data, isLoading, error } = useQuery<{ products: Product[] }>({
-    queryKey: ['/api/products'],
-  });
-
   const checkoutMutation = useMutation({
-    mutationFn: async (priceId: string) => {
-      const response = await apiRequest('POST', '/api/checkout', { priceId });
+    mutationFn: async (planId: string) => {
+      const response = await apiRequest('POST', '/api/checkout', { planId });
       return response.json();
     },
     onSuccess: (data) => {
@@ -71,48 +68,9 @@ export default function PricingPage() {
     },
   });
 
-  const handlePreOrder = (priceId: string) => {
-    checkoutMutation.mutate(priceId);
+  const handlePreOrder = (planId: string) => {
+    checkoutMutation.mutate(planId);
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (error || !data?.products?.length) {
-    return (
-      <div className="min-h-screen bg-background">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <Link href="/">
-            <Button variant="ghost" className="mb-8 gap-2" data-testid="link-back-home">
-              <ArrowLeft className="h-4 w-4" />
-              Back to Home
-            </Button>
-          </Link>
-          
-          <div className="text-center">
-            <h1 className="text-3xl font-bold mb-4">Pre-Order Coming Soon</h1>
-            <p className="text-muted-foreground mb-8">
-              Our subscription plans are being set up. Please check back shortly or join our waitlist.
-            </p>
-            <Link href="/#waitlist">
-              <Button data-testid="button-join-waitlist">Join Waitlist</Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const sortedProducts = [...data.products].sort((a, b) => {
-    const priceA = a.prices[0]?.unit_amount || 0;
-    const priceB = b.prices[0]?.unit_amount || 0;
-    return priceA - priceB;
-  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -125,84 +83,72 @@ export default function PricingPage() {
         </Link>
 
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Choose Your Plan</h1>
+          <h1 className="text-4xl font-bold mb-4">Simple, Transparent Pricing</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Pre-order now and be among the first to experience intelligent family financial coaching. 
-            Early supporters get priority access when we launch.
+            One complete solution for your family's finances. Choose the billing that works best for you.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-          {sortedProducts.map((product, index) => {
-            const price = product.prices[0];
-            const tier = product.metadata?.tier || (index === 0 ? 'family' : 'family_plus');
-            const planInfo = planFeatures[tier] || planFeatures.family;
-            const isPopular = tier === 'family_plus';
+        <div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto mb-16">
+          {pricingPlans.map((plan) => (
+            <Card 
+              key={plan.id} 
+              className={`relative p-8 ${plan.isPopular ? 'border-primary border-2 shadow-lg' : ''}`}
+              data-testid={`card-plan-${plan.id}`}
+            >
+              {plan.isPopular && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                    Best Value
+                  </span>
+                </div>
+              )}
 
-            return (
-              <Card 
-                key={product.id} 
-                className={`relative p-8 ${isPopular ? 'border-primary border-2 shadow-lg' : ''}`}
-                data-testid={`card-plan-${tier}`}
+              <div className="text-center mb-6">
+                <h2 className="text-2xl font-bold mb-4">{plan.name}</h2>
+                
+                <div className="mb-2">
+                  <span className="text-4xl font-bold">£{plan.price.toFixed(2)}</span>
+                  <span className="text-muted-foreground">{plan.period}</span>
+                </div>
+
+                <p className="text-sm text-muted-foreground">{plan.subtext}</p>
+              </div>
+
+              <Button 
+                className="w-full" 
+                size="lg"
+                variant={plan.isPopular ? "default" : "outline"}
+                onClick={() => handlePreOrder(plan.id)}
+                disabled={checkoutMutation.isPending}
+                data-testid={`button-preorder-${plan.id}`}
               >
-                {isPopular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </span>
-                  </div>
+                {checkoutMutation.isPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                    Processing...
+                  </>
+                ) : (
+                  plan.buttonText
                 )}
+              </Button>
+            </Card>
+          ))}
+        </div>
 
-                <div className="text-center mb-6">
-                  <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
-                  
-                  {price && (
-                    <div className="mb-4">
-                      <span className="text-4xl font-bold">
-                        {formatPrice(price.unit_amount, price.currency)}
-                      </span>
-                      <span className="text-muted-foreground">/month</span>
-                    </div>
-                  )}
-
-                  <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
-                    {planInfo.accounts}
-                  </div>
+        <div className="max-w-3xl mx-auto">
+          <h3 className="text-2xl font-bold text-center mb-8">Everything Included</h3>
+          <div className="grid gap-6 md:grid-cols-2">
+            {unifiedFeatures.map((feature, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <p className="font-medium">{feature.title}</p>
+                  <p className="text-sm text-muted-foreground">{feature.description}</p>
                 </div>
-
-                <ul className="space-y-3 mb-6">
-                  {planInfo.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="text-center text-sm text-muted-foreground mb-6 pb-6 border-b">
-                  {planInfo.support}
-                </div>
-
-                <Button 
-                  className="w-full" 
-                  size="lg"
-                  variant={isPopular ? "default" : "outline"}
-                  onClick={() => price && handlePreOrder(price.id)}
-                  disabled={!price || checkoutMutation.isPending}
-                  data-testid={`button-preorder-${tier}`}
-                >
-                  {checkoutMutation.isPending ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                      Processing...
-                    </>
-                  ) : (
-                    'Pre-Order Now'
-                  )}
-                </Button>
-              </Card>
-            );
-          })}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 text-center">
