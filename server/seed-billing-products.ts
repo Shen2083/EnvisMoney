@@ -17,8 +17,28 @@ async function seedBillingProducts() {
 
   if (monthlyProduct) {
     console.log('Monthly product already exists:', monthlyProduct.id);
+    // Check if price is already £19.99 (1999 pence)
     const prices = await stripe.prices.list({ product: monthlyProduct.id, active: true });
-    monthlyPriceId = prices.data[0]?.id || '';
+    const correctPrice = prices.data.find(p => p.unit_amount === 1999);
+    if (correctPrice) {
+      monthlyPriceId = correctPrice.id;
+    } else {
+      // Create new price at £19.99 and archive old ones
+      const newPrice = await stripe.prices.create({
+        product: monthlyProduct.id,
+        unit_amount: 1999,
+        currency: 'gbp',
+        recurring: { interval: 'month' },
+      });
+      monthlyPriceId = newPrice.id;
+      // Archive old prices
+      for (const oldPrice of prices.data) {
+        if (oldPrice.id !== newPrice.id) {
+          await stripe.prices.update(oldPrice.id, { active: false });
+        }
+      }
+      console.log('Updated Monthly price to £19.99:', newPrice.id);
+    }
   } else {
     const product = await stripe.products.create({
       name: 'Envis Monthly Plan',
@@ -27,7 +47,7 @@ async function seedBillingProducts() {
     });
     const price = await stripe.prices.create({
       product: product.id,
-      unit_amount: 1349,
+      unit_amount: 1999,
       currency: 'gbp',
       recurring: { interval: 'month' },
     });
@@ -42,7 +62,7 @@ async function seedBillingProducts() {
   } else {
     const product = await stripe.products.create({
       name: 'Envis Annual Plan',
-      description: 'Complete family financial coaching with all features. Billed annually - save 17%.',
+      description: 'Complete family financial coaching with all features. Billed annually - save 44%.',
       metadata: { billing: 'annual' },
     });
     const price = await stripe.prices.create({

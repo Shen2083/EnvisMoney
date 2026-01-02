@@ -14,7 +14,8 @@ Preferred communication style: Simple, everyday language.
 
 ### Pricing Restructure (December 2025):
 - **Billing Frequency Model:** Changed from tier-based (Family vs Family Plus) to billing frequency-based (Monthly vs Annual)
-- **New Pricing:** Monthly £13.49/month, Annual £134.99/year (17% savings)
+- **New Pricing:** Monthly £19.99/month, Annual £134.99/year (44% savings)
+- **Pre-registration discount:** Monthly price set higher so early adopters can receive discounts at launch
 - **Unified Features:** All subscribers get the complete feature set including Fairness Engine™, Mine/Yours/Ours sorting, AI coaching, and unlimited accounts
 - **Hero Messaging Updated:** New tagline focusing on couples and invisible labour recognition
 - **Stripe Products:** Monthly and Annual products seeded with `server/seed-billing-products.ts`

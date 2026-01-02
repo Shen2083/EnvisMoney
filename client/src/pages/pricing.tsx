@@ -36,7 +36,7 @@ const pricingPlans = [
   {
     id: "monthly",
     name: "Monthly",
-    price: 13.49,
+    price: 19.99,
     period: "/month",
     subtext: "Flexible, cancel anytime.",
     buttonText: "Start Monthly",
@@ -48,7 +48,7 @@ const pricingPlans = [
     name: "Annual",
     price: 134.99,
     period: "/year",
-    subtext: "Save 17% (Pay once a year).",
+    subtext: "Save 44% (Pay once a year).",
     buttonText: "Start Annual",
     isPopular: true,
     interval: "year",
