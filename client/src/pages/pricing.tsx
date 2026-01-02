@@ -19,7 +19,7 @@ const unifiedFeatures = [
     description: "Calculate fair contributions that value invisible labour (like childcare) alongside income",
   },
   {
-    title: "Proactive AI Coaching",
+    title: "Proactive AI Coaching with Insights Engine™",
     description: "Get neutral, real-time guidance to resolve conflicts before they start",
   },
   {
