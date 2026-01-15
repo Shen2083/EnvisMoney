@@ -72,7 +72,7 @@ export function Footer() {
             </p>
           </div>
           <div className="text-center text-sm text-muted-foreground border-t pt-4">
-            <p>© 2025 Envis. All rights reserved. Made with care for UK couples and families.</p>
+            <p>© 2026 Envis. All rights reserved. Made with care for UK couples and families.</p>
           </div>
         </div>
       </div>
