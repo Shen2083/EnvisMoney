@@ -33,7 +33,7 @@ export function HeroSection() {
                 className="text-base gap-2"
                 data-testid="button-join-waitlist-hero"
               >
-                Join the Waiting List
+                Request Early Access
                 <ArrowRight className="h-5 w-5" />
               </Button>
               <Button
