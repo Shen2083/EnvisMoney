@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -8,6 +9,20 @@ import { Footer } from "@/components/footer";
 import { Link } from "wouter";
 
 export default function Home() {
+  // Handle hash-based navigation on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const elementId = hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, []);
+
   const scrollToWaitlist = () => {
     const element = document.getElementById("waitlist");
     if (element) {
