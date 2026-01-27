@@ -1,6 +1,15 @@
 export function Logo({ className = "h-8 w-auto" }: { className?: string }) {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <div className="flex items-center gap-2.5">
+    <button 
+      onClick={scrollToTop} 
+      className="flex items-center gap-2.5 cursor-pointer"
+      data-testid="button-logo-home"
+      aria-label="Scroll to top"
+    >
       <svg
         viewBox="0 0 36 36"
         fill="none"
@@ -34,6 +43,6 @@ export function Logo({ className = "h-8 w-auto" }: { className?: string }) {
       }}>
         Envis
       </span>
-    </div>
+    </button>
   );
 }
