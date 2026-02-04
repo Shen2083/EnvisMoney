@@ -1,0 +1,95 @@
+{
+  "dataset_info": {
+    "name": "Envis Household Financial Behaviour Dataset",
+    "version": "1.0",
+    "description": "Sample labelled records from the Envis Insight Engine training dataset",
+    "total_labelled_records": 8234,
+    "samples_in_file": 5,
+    "source": "Appendix S, Part 2.3 - Labelled Sample Records"
+  },
+  "label_schema": {
+    "distress_indicators": {
+      "self_blame": {"type": "binary", "description": "Language indicating personal failure attribution"},
+      "avoidance": {"type": "binary", "description": "Reluctance to engage with financial information"},
+      "secrecy": {"type": "binary", "description": "Hiding financial information from partner/family"},
+      "distress_overall": {"type": "binary", "description": "Any distress indicator present"}
+    },
+    "tension": {"type": "binary", "description": "Interpersonal financial conflict signals"},
+    "framing": {
+      "type": "categorical",
+      "classes": ["supportive", "direct", "celebratory", "gentle", "urgent"]
+    }
+  },
+  "samples": [
+    {
+      "record_id": "ENS_00847",
+      "source": "Reddit archive",
+      "text": "I've been hiding purchases from my partner for months now. Every time I say I'll stop, I don't. I know it's wrong but I feel like they'll judge me if they find out how much I've spent. I'm such a mess when it comes to money.",
+      "labels": {
+        "self_blame": 1,
+        "avoidance": 0,
+        "secrecy": 1,
+        "distress_overall": 1,
+        "tension": 0,
+        "recommended_framing": "gentle"
+      },
+      "annotation_notes": "Clear distress pattern with self-blame ('I'm such a mess') and secrecy ('hiding purchases', 'they'll judge me'). Tension is latent (secrecy creates risk) but not currently active - source of distress is self, not partner conflict."
+    },
+    {
+      "record_id": "ENS_02134",
+      "source": "Reddit archive",
+      "text": "We went over budget on groceries again this month. With prices going up, we need to either increase our food budget or find cheaper alternatives. Anyone have good tips for meal planning?",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "direct"
+      },
+      "annotation_notes": "Factual acknowledgment of budget issue with problem-solving orientation. No distress indicators despite negative situation. External attribution to prices, collaborative 'we' language."
+    },
+    {
+      "record_id": "ENS_04521",
+      "source": "Reddit archive",
+      "text": "I do ALL the budgeting in our house while my husband spends whatever he wants. When I bring up money, he says I'm being controlling. I'm exhausted. How do other couples handle this?",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 1,
+        "recommended_framing": "supportive"
+      },
+      "annotation_notes": "Clear tension pattern with partner blame and reported conflict. NOT self-directed distress - the distress is interpersonal/situational. Frustration directed externally, seeking peer advice."
+    },
+    {
+      "record_id": "ENS_06892",
+      "source": "Reddit archive",
+      "text": "We finally did it—£10,000 in our emergency fund! Took us 18 months of tracking every penny, but we stuck with it together. Feeling proud of us today.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "celebratory"
+      },
+      "annotation_notes": "Clear achievement with positive emotion. Good candidate for reinforcement. Collaborative language ('we', 'together', 'us') indicates healthy household financial coordination."
+    },
+    {
+      "record_id": "ENS_08234",
+      "source": "Reddit archive",
+      "text": "I really wish we'd started saving earlier. We're behind where we should be for our age, but at least we're finally on track now.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "supportive"
+      },
+      "annotation_notes": "BORDERLINE CASE - this was a disagreement case (original labels differed). Resolved by noting: no explicit negative self-evaluation, 'at least' indicates acceptance, forward-looking orientation. 'Wish we'd started' is regret, not self-blame. 'Behind where we should be' is comparative but factual. Label 0, but near threshold. Gentle encouragement appropriate."
+    }
+  ]
+}

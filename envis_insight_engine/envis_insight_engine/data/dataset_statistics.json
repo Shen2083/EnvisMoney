@@ -1,0 +1,206 @@
+{
+  "dataset_name": "Envis Household Financial Behaviour Dataset",
+  "version": "1.0",
+  "created": "2025-07-01",
+  "last_updated": "2025-07-20",
+  
+  "source_data": {
+    "raw_records_collected": 2147832,
+    "after_cleaning": 1923456,
+    "after_household_filtering": 487291,
+    "retention_rate": 0.253,
+    
+    "sources": {
+      "huggingface_transactions": {
+        "records": 450000,
+        "type": "synthetic/anonymised transactions",
+        "licence": "Apache 2.0 / MIT / CC-BY-4.0"
+      },
+      "reddit_archives": {
+        "records": 1800000,
+        "subreddits": [
+          "UKPersonalFinance",
+          "personalfinance", 
+          "FinancialPlanning",
+          "povertyfinance"
+        ],
+        "date_range": "2019-2024"
+      },
+      "synthetic_households": {
+        "records": "generated",
+        "basis": "ONS household statistics"
+      }
+    }
+  },
+  
+  "labelled_subset": {
+    "total_records": 8234,
+    "labelling_period": "May-July 2025",
+    "labelling_team_size": 3,
+    
+    "splits": {
+      "train": {
+        "records": 6587,
+        "percentage": 80
+      },
+      "validation": {
+        "records": 823,
+        "percentage": 10
+      },
+      "test": {
+        "records": 824,
+        "percentage": 10
+      }
+    },
+    
+    "stratification": {
+      "method": "distress_label",
+      "household_leak_prevention": true
+    }
+  },
+  
+  "label_distributions": {
+    "distress_overall": {
+      "high_1": {
+        "count": 2502,
+        "percentage": 30.4
+      },
+      "low_0": {
+        "count": 5732,
+        "percentage": 69.6
+      },
+      "note": "Distribution reflects stratified sampling to ensure adequate high-distress examples."
+    },
+    
+    "distress_subcategories": {
+      "self_blame": {
+        "positive": 1893,
+        "percentage": 23.0
+      },
+      "avoidance": {
+        "positive": 1564,
+        "percentage": 19.0
+      },
+      "secrecy": {
+        "positive": 1152,
+        "percentage": 14.0
+      }
+    },
+    
+    "framing_labels": {
+      "supportive": {
+        "count": 2353,
+        "percentage": 28.6
+      },
+      "direct": {
+        "count": 2168,
+        "percentage": 26.3
+      },
+      "celebratory": {
+        "count": 838,
+        "percentage": 10.2
+      },
+      "gentle": {
+        "count": 1958,
+        "percentage": 23.8
+      },
+      "urgent": {
+        "count": 917,
+        "percentage": 11.1
+      }
+    },
+    
+    "tension_indicators": {
+      "high_1": {
+        "count": 1802,
+        "percentage": 21.9
+      },
+      "low_0": {
+        "count": 6432,
+        "percentage": 78.1
+      }
+    }
+  },
+  
+  "household_type_distribution": {
+    "couples_no_children": {
+      "count": 2634,
+      "percentage": 32.0
+    },
+    "couples_with_children": {
+      "count": 2306,
+      "percentage": 28.0
+    },
+    "single_person": {
+      "count": 2059,
+      "percentage": 25.0
+    },
+    "single_parent": {
+      "count": 823,
+      "percentage": 10.0
+    },
+    "multi_generational": {
+      "count": 412,
+      "percentage": 5.0
+    }
+  },
+  
+  "text_statistics": {
+    "mean_length_words": 87.3,
+    "median_length_words": 72,
+    "min_length_words": 12,
+    "max_length_words": 458,
+    "std_length_words": 54.2
+  },
+  
+  "household_relevance_scores": {
+    "mean": 0.62,
+    "median": 0.59,
+    "std": 0.18,
+    "min": 0.40,
+    "max": 0.98,
+    "distribution_by_decile": {
+      "0.40-0.50": 1852,
+      "0.50-0.60": 2198,
+      "0.60-0.70": 1893,
+      "0.70-0.80": 1317,
+      "0.80-0.90": 741,
+      "0.90-1.00": 233
+    }
+  },
+  
+  "quality_metrics": {
+    "double_labelled_records": 1647,
+    "double_label_percentage": 20.0,
+    
+    "inter_annotator_agreement": {
+      "distress_overall": {
+        "cohens_kappa": 0.68,
+        "percent_agreement": 81.0
+      },
+      "self_blame": {
+        "cohens_kappa": 0.71,
+        "percent_agreement": 84.0
+      },
+      "avoidance": {
+        "cohens_kappa": 0.65,
+        "percent_agreement": 79.0
+      },
+      "secrecy": {
+        "cohens_kappa": 0.73,
+        "percent_agreement": 86.0
+      },
+      "framing_selection": {
+        "cohens_kappa": 0.64,
+        "percent_agreement": 74.0
+      },
+      "tension_indicators": {
+        "cohens_kappa": 0.71,
+        "percent_agreement": 83.0
+      }
+    },
+    
+    "disagreement_resolution_meetings": 6,
+    "edge_cases_documented": 142
+  }
+}

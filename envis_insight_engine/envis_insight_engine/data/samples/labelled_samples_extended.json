@@ -1,0 +1,332 @@
+{
+  "dataset_info": {
+    "name": "Envis Household Financial Behaviour Dataset",
+    "version": "1.0",
+    "description": "Extended sample of labelled records from the Envis Insight Engine training dataset",
+    "total_labelled_records": 8234,
+    "samples_in_file": 20,
+    "source": "Appendix S - Extended Examples"
+  },
+  "samples": [
+    {
+      "record_id": "ENS_00847",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "I've been hiding purchases from my partner for months now. Every time I say I'll stop, I don't. I know it's wrong but I feel like they'll judge me if they find out how much I've spent. I'm such a mess when it comes to money.",
+      "labels": {
+        "self_blame": 1,
+        "avoidance": 0,
+        "secrecy": 1,
+        "distress_overall": 1,
+        "tension": 0,
+        "recommended_framing": "gentle"
+      },
+      "household_relevance_score": 0.72,
+      "annotation_notes": "Clear distress pattern with self-blame and secrecy. Tension is latent but not currently active."
+    },
+    {
+      "record_id": "ENS_02134",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "We went over budget on groceries again this month. With prices going up, we need to either increase our food budget or find cheaper alternatives. Anyone have good tips for meal planning?",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "direct"
+      },
+      "household_relevance_score": 0.58,
+      "annotation_notes": "Factual, problem-solving orientation. External attribution to prices."
+    },
+    {
+      "record_id": "ENS_04521",
+      "source": "Reddit archive",
+      "subreddit": "personalfinance",
+      "text": "I do ALL the budgeting in our house while my husband spends whatever he wants. When I bring up money, he says I'm being controlling. I'm exhausted. How do other couples handle this?",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 1,
+        "recommended_framing": "supportive"
+      },
+      "household_relevance_score": 0.89,
+      "annotation_notes": "Clear tension pattern. Frustration directed externally, seeking peer advice."
+    },
+    {
+      "record_id": "ENS_06892",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "We finally did it—£10,000 in our emergency fund! Took us 18 months of tracking every penny, but we stuck with it together. Feeling proud of us today.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "celebratory"
+      },
+      "household_relevance_score": 0.81,
+      "annotation_notes": "Clear achievement with positive emotion. Good candidate for reinforcement."
+    },
+    {
+      "record_id": "ENS_08234",
+      "source": "Reddit archive",
+      "subreddit": "FinancialPlanning",
+      "text": "I really wish we'd started saving earlier. We're behind where we should be for our age, but at least we're finally on track now.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "supportive"
+      },
+      "household_relevance_score": 0.52,
+      "annotation_notes": "BORDERLINE - regret without self-blame. Forward-looking orientation."
+    },
+    {
+      "record_id": "ENS_01123",
+      "source": "Reddit archive",
+      "subreddit": "povertyfinance",
+      "text": "I can't even look at our bank account anymore. Every time I do, I feel sick. My wife keeps asking about our holiday fund and I just change the subject. I've let everyone down.",
+      "labels": {
+        "self_blame": 1,
+        "avoidance": 1,
+        "secrecy": 1,
+        "distress_overall": 1,
+        "tension": 0,
+        "recommended_framing": "gentle"
+      },
+      "household_relevance_score": 0.85,
+      "annotation_notes": "Triple distress indicators: avoidance ('can't look'), secrecy ('change the subject'), self-blame ('let everyone down'). High-risk case."
+    },
+    {
+      "record_id": "ENS_01456",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "Quick question - what's the best way to split bills with a partner when you have different incomes? We've been doing 50/50 but it doesn't feel fair since I earn more.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "direct"
+      },
+      "household_relevance_score": 0.67,
+      "annotation_notes": "Practical question, no distress. Proactive financial coordination."
+    },
+    {
+      "record_id": "ENS_01789",
+      "source": "Reddit archive",
+      "subreddit": "personalfinance",
+      "text": "My partner and I had our monthly money meeting last night. We're both contributing to our house deposit fund and it's so motivating to see it grow together. 6 more months to go!",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "celebratory"
+      },
+      "household_relevance_score": 0.79,
+      "annotation_notes": "Positive progress, collaborative language. Good example of healthy financial coordination."
+    },
+    {
+      "record_id": "ENS_02567",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "Every time we try to have a conversation about money, it turns into an argument. He thinks I'm too frugal, I think he's too careless. We're supposed to be saving for a wedding but at this rate we'll never get there.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 1,
+        "recommended_framing": "supportive"
+      },
+      "household_relevance_score": 0.91,
+      "annotation_notes": "Clear tension with reported arguments. Both-sides perspective but frustration evident."
+    },
+    {
+      "record_id": "ENS_03012",
+      "source": "Reddit archive",
+      "subreddit": "povertyfinance",
+      "text": "I know I should check our accounts but I just can't bring myself to do it. It's been three weeks. My anxiety is through the roof but the thought of seeing the numbers makes it worse.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 1,
+        "secrecy": 0,
+        "distress_overall": 1,
+        "tension": 0,
+        "recommended_framing": "gentle"
+      },
+      "household_relevance_score": 0.48,
+      "annotation_notes": "Clear avoidance pattern with explicit anxiety mention. No self-blame despite distress."
+    },
+    {
+      "record_id": "ENS_03345",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "Just set up a joint account with my girlfriend for household expenses. We each transfer £600/month and use it for rent, bills, and groceries. So far so good after 3 months.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "direct"
+      },
+      "household_relevance_score": 0.73,
+      "annotation_notes": "Neutral update on household financial arrangement. Good baseline example."
+    },
+    {
+      "record_id": "ENS_03678",
+      "source": "Reddit archive",
+      "subreddit": "personalfinance",
+      "text": "I'm such an idiot. I forgot to cancel a subscription and we got charged £200 we couldn't afford. Now we're going to be short on rent. My partner is going to be furious and they'd be right to be.",
+      "labels": {
+        "self_blame": 1,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 1,
+        "tension": 0,
+        "recommended_framing": "gentle"
+      },
+      "household_relevance_score": 0.68,
+      "annotation_notes": "Strong self-blame ('idiot', 'right to be furious'). Anticipated tension but not yet actual."
+    },
+    {
+      "record_id": "ENS_04123",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "We paid off our car loan today! It's been 4 years of payments and we're finally free. Going to redirect that £280/month straight into the kids' education fund.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "celebratory"
+      },
+      "household_relevance_score": 0.82,
+      "annotation_notes": "Achievement milestone. Forward planning for children indicates healthy household finances."
+    },
+    {
+      "record_id": "ENS_04890",
+      "source": "Reddit archive",
+      "subreddit": "povertyfinance",
+      "text": "I've been telling my husband we're fine but we're really not. I've been using credit cards to cover the gap and I don't know how to tell him. The debt keeps growing and I feel trapped.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 1,
+        "distress_overall": 1,
+        "tension": 0,
+        "recommended_framing": "gentle"
+      },
+      "household_relevance_score": 0.88,
+      "annotation_notes": "Secrecy about debt is primary indicator. Emotional distress ('feel trapped') without explicit self-blame."
+    },
+    {
+      "record_id": "ENS_05234",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "Has anyone successfully combined finances after getting married? We've both been independent for years and it feels weird to share everything. Looking for advice on what worked for others.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "direct"
+      },
+      "household_relevance_score": 0.71,
+      "annotation_notes": "Information-seeking, no distress. Normal transition question."
+    },
+    {
+      "record_id": "ENS_05678",
+      "source": "Reddit archive",
+      "subreddit": "personalfinance",
+      "text": "My wife and I have completely different money personalities - she's a saver, I'm a spender. After years of conflict, we finally found a system that works. Happy to share if anyone's interested.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "celebratory"
+      },
+      "household_relevance_score": 0.84,
+      "annotation_notes": "Past tension acknowledged but currently resolved. Positive framing."
+    },
+    {
+      "record_id": "ENS_06123",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "Really struggling here. Our income dropped by 30% when my partner was made redundant. We've cut everything we can but I still lie awake at night worrying about how we'll make it through.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 1,
+        "tension": 0,
+        "recommended_framing": "supportive"
+      },
+      "household_relevance_score": 0.76,
+      "annotation_notes": "Financial distress due to external circumstances. Anxiety evident but no self-blame - situational stress."
+    },
+    {
+      "record_id": "ENS_06567",
+      "source": "Reddit archive",
+      "subreddit": "povertyfinance",
+      "text": "Why can't my husband understand that we need to save? Every time I try to put money aside, he finds something 'essential' to buy. I've given up trying to talk to him about it.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 1,
+        "secrecy": 0,
+        "distress_overall": 1,
+        "tension": 1,
+        "recommended_framing": "supportive"
+      },
+      "household_relevance_score": 0.87,
+      "annotation_notes": "Tension with partner plus avoidance of further discussion ('given up'). Complex case."
+    },
+    {
+      "record_id": "ENS_07012",
+      "source": "Reddit archive",
+      "subreddit": "UKPersonalFinance",
+      "text": "Teaching our kids about money has been one of the best things we've done. They now understand saving and even contribute to our family holiday fund from their pocket money. Proud parent moment!",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "celebratory"
+      },
+      "household_relevance_score": 0.83,
+      "annotation_notes": "Positive family financial education. Multi-generational household engagement."
+    },
+    {
+      "record_id": "ENS_07456",
+      "source": "Reddit archive",
+      "subreddit": "personalfinance",
+      "text": "Update: We hit our £5000 goal! Thanks everyone for the advice over the past year. Having this emergency fund means we can finally sleep at night knowing we're protected.",
+      "labels": {
+        "self_blame": 0,
+        "avoidance": 0,
+        "secrecy": 0,
+        "distress_overall": 0,
+        "tension": 0,
+        "recommended_framing": "celebratory"
+      },
+      "household_relevance_score": 0.61,
+      "annotation_notes": "Goal achievement. Contrast with prior anxiety shows positive trajectory."
+    }
+  ]
+}
