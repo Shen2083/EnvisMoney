@@ -1,0 +1,109 @@
+# Envis Insight Engine - Preprocessing Configuration
+
+# Input sources
+sources:
+  transactions:
+    type: "huggingface"
+    datasets:
+      - "financial_phrasebank"
+      - "synthetic_financial_transactions"
+    licence: "Apache 2.0 / MIT / CC-BY-4.0"
+  
+  text:
+    type: "reddit_archive"
+    subreddits:
+      - "UKPersonalFinance"
+      - "personalfinance"
+      - "FinancialPlanning"
+      - "povertyfinance"
+    date_range:
+      start: "2019-01-01"
+      end: "2024-12-31"
+
+# Text cleaning
+cleaning:
+  min_text_length: 10  # words
+  max_text_length: 500  # words
+  remove_urls: true
+  lowercase: true
+  remove_special_chars: true
+  keep_currency_symbols: true  # £, $, €
+
+# Household filtering
+filtering:
+  threshold: 0.4
+  
+  # Signal weights (must sum to 1.0)
+  weights:
+    keyword: 0.40
+    pronoun_ratio: 0.20
+    shared_goal_pattern: 0.25
+    multi_person_reference: 0.15
+  
+  # Performance at different thresholds (from validation)
+  threshold_performance:
+    - threshold: 0.3
+      precision: 0.71
+      recall: 0.89
+      f1: 0.79
+    - threshold: 0.4
+      precision: 0.83
+      recall: 0.81
+      f1: 0.82  # Selected
+    - threshold: 0.5
+      precision: 0.89
+      recall: 0.68
+      f1: 0.77
+
+# Household generation
+household_generation:
+  # Based on ONS statistics
+  distribution:
+    couples_no_children: 0.32
+    couples_with_children: 0.28
+    single_person: 0.25
+    single_parent: 0.10
+    multi_generational: 0.05
+  
+  age_brackets:
+    - "18-25"
+    - "25-35"
+    - "35-45"
+    - "45-55"
+    - "55-65"
+    - "65+"
+  
+  income_brackets:
+    - "low"
+    - "medium"
+    - "high"
+    - "unknown"
+
+# Data splitting
+splitting:
+  train_ratio: 0.80
+  val_ratio: 0.10
+  test_ratio: 0.10
+  
+  stratify_by: "distress_label"
+  household_leak_prevention: true  # No household in multiple splits
+
+# Random seed for reproducibility
+seed: 42
+
+# Exclusion criteria
+exclusions:
+  - type: "crisis_indicators"
+    patterns: ["suicide", "self-harm", "kill myself", "end it all"]
+    action: "exclude"
+  
+  - type: "non_english"
+    action: "exclude"
+  
+  - type: "spam"
+    patterns: ["click here", "limited offer", "act now"]
+    action: "exclude"
+  
+  - type: "too_short"
+    min_words: 10
+    action: "exclude"

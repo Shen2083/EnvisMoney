@@ -1,0 +1,208 @@
+# Envis Insight Engine - Model Configuration
+# Run ID: final_v2_2025_07_15
+# Documentation Reference: Appendix S, Part 1.2 Architecture Design
+
+model:
+  name: "envis_insight_engine"
+  version: "1.0.0"
+  total_parameters: 131284096
+
+# Transaction Encoder Configuration
+transaction_encoder:
+  type: "transformer"
+  num_layers: 4
+  num_attention_heads: 8
+  embedding_dim: 256
+  feedforward_dim: 1024
+  dropout: 0.1
+  
+  # Amount encoding (log-scale buckets)
+  amount_buckets:
+    - [0, 1]
+    - [1, 2]
+    - [2, 5]
+    - [5, 10]
+    - [10, 20]
+    - [20, 50]
+    - [50, 100]
+    - [100, 200]
+    - [200, 500]
+    - [500, 1000]
+    - [1000, 2000]
+    - [2000, null]  # 2000+
+  amount_embedding_dim: 32
+  
+  # Category encoding
+  num_categories: 120
+  category_embedding_dim: 64
+  special_categories:
+    - "joint_expense"
+    - "child_expense"
+    - "savings_transfer"
+    - "partner_transfer"
+  
+  # Merchant encoding
+  merchant_vocab_size: 8001  # 8000 + UNK token
+  merchant_embedding_dim: 64
+  
+  # Temporal encoding
+  temporal_encoding:
+    day_of_week_dim: 7
+    day_of_month_dim: 31
+    month_dim: 12
+    positional_dim: 64
+
+# Text Encoder Configuration
+text_encoder:
+  base_model: "ProsusAI/finbert"
+  base_model_params: 110000000  # ~110M parameters
+  output_dim: 768
+  fine_tuning_method: "adapter"
+  
+  # Adapter configuration (Houlsby et al., 2019)
+  adapter:
+    num_adapters: 12  # One per transformer layer
+    bottleneck_dim: 64
+    nonlinearity: "gelu"
+    residual: true
+    trainable_params_ratio: 0.05  # ~5% of parameters
+
+# Household Context Encoder Configuration
+household_encoder:
+  type: "graph_attention_network"
+  num_layers: 3
+  hidden_dim: 64
+  num_attention_heads: 4
+  
+  # Node features
+  node_features:
+    role_types:
+      - "partner_1"
+      - "partner_2"
+      - "child"
+      - "parent"
+      - "other"
+    age_brackets:
+      - "18-25"
+      - "25-35"
+      - "35-45"
+      - "45-55"
+      - "55-65"
+      - "65+"
+    income_brackets:
+      - "low"
+      - "medium"
+      - "high"
+      - "unknown"
+  
+  # Edge types
+  edge_types:
+    - "partner_partner"
+    - "parent_child"
+    - "other"
+  
+  # Pooling
+  pooling_method: "attention_weighted"
+
+# Cross-Modal Fusion Layer Configuration
+fusion_layer:
+  output_dim: 512
+  
+  # Cross-attention mechanisms
+  cross_attention:
+    transaction_to_text: true
+    text_to_household: true
+    transaction_to_household: true
+  
+  # Gated fusion
+  gating:
+    enabled: true
+    learned_gates: true
+
+# Multi-Task Prediction Heads
+prediction_heads:
+  distress_risk:
+    type: "feedforward"
+    layers: [512, 256, 1]
+    activation: "relu"
+    output_activation: "sigmoid"
+    loss: "binary_cross_entropy"
+  
+  timing:
+    delay_prediction:
+      type: "regression"
+      loss: "mse"
+    urgency_classification:
+      num_classes: 3
+      classes: ["immediate", "soon", "can_wait"]
+      loss: "cross_entropy"
+  
+  framing_selection:
+    num_classes: 5
+    classes: ["supportive", "direct", "celebratory", "gentle", "urgent"]
+    output_activation: "softmax"
+    loss: "cross_entropy"
+  
+  goal_risk:
+    type: "multi_label"
+    output_activation: "sigmoid"
+    loss: "binary_cross_entropy"
+  
+  tension:
+    type: "feedforward"
+    layers: [512, 256, 1]
+    activation: "relu"
+    output_activation: "sigmoid"
+    loss: "binary_cross_entropy"
+
+# Training Configuration
+training:
+  # Multi-task loss weighting (Kendall et al., 2018)
+  loss_weighting: "uncertainty_weighted"
+  
+  # Optimiser
+  optimiser: "adamw"
+  weight_decay: 0.01
+  
+  # Learning rates (differential)
+  learning_rates:
+    finbert: 2.0e-5
+    new_components: 1.0e-4
+  
+  # Learning rate schedule
+  lr_schedule:
+    warmup_steps: 500
+    decay: "cosine"
+  
+  # Regularisation
+  dropout: 0.1
+  gradient_clip_norm: 1.0
+  
+  # Early stopping
+  early_stopping:
+    patience: 3
+    monitor: "validation_loss"
+    mode: "min"
+  
+  # Batch and epochs
+  batch_size: 32
+  max_epochs: 20
+
+# Dataset Configuration
+dataset:
+  total_filtered_records: 487291
+  labelled_records: 8234
+  
+  splits:
+    train: 0.80  # 6587 records
+    validation: 0.10  # 823 records
+    test: 0.10  # 824 records
+  
+  stratification: "distress_label"
+  household_leak_prevention: true  # No household in multiple splits
+
+# Hardware
+hardware:
+  gpu: "NVIDIA A100-SXM4-40GB"
+  ram: "64GB"
+  estimated_training_time: "6-8 hours"
