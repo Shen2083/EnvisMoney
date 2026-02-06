@@ -1,14 +1,61 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Scale, BarChart3, Compass, MessageCircle, Building, ShieldCheck, Wallet, TrendingUp, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Heart, PiggyBank, Users, CheckCircle, Lock, Scale, BarChart3, Compass, MessageCircle, Building, ShieldCheck, Wallet, TrendingUp, Sparkles, Loader2 } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { FAQSection } from "@/components/faq-section";
 import { Footer } from "@/components/footer";
 
 
 export default function Home() {
+  const [heroEmail, setHeroEmail] = useState("");
+  const [heroSubmitted, setHeroSubmitted] = useState(false);
+  const [heroError, setHeroError] = useState("");
+
+  const heroMutation = useMutation({
+    mutationFn: async (emailAddress: string) => {
+      const res = await apiRequest("POST", "/api/waitlist", {
+        name: "",
+        email: emailAddress,
+        familySize: "2",
+        interests: "Signed up via hero section",
+      });
+      return await res.json();
+    },
+    onSuccess: () => {
+      setHeroSubmitted(true);
+      setHeroError("");
+    },
+    onError: (err: any) => {
+      const msg = err?.message || "Something went wrong. Please try again.";
+      try {
+        const match = msg.match(/\d+:\s*({.*})/);
+        if (match) {
+          const parsed = JSON.parse(match[1]);
+          setHeroError(parsed.error || msg);
+        } else {
+          setHeroError(msg);
+        }
+      } catch {
+        setHeroError(msg);
+      }
+    },
+  });
+
+  const handleHeroSignup = (e: React.FormEvent) => {
+    e.preventDefault();
+    setHeroError("");
+    if (!heroEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(heroEmail)) {
+      setHeroError("Please enter a valid email address.");
+      return;
+    }
+    heroMutation.mutate(heroEmail);
+  };
+
   // Handle hash-based navigation on page load
   useEffect(() => {
     const hash = window.location.hash;
@@ -107,17 +154,47 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  onClick={scrollToWaitlist}
-                  className="text-base gap-2"
-                  data-testid="button-join-waitlist-hero"
-                >
-                  Join the Waiting List
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-              </div>
+              {heroSubmitted ? (
+                <div className="flex items-center gap-3 p-4 rounded-md bg-success/10 text-success" data-testid="hero-success-message">
+                  <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                  <span className="font-medium">You're on the list! We'll be in touch soon.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleHeroSignup} className="space-y-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Input
+                      type="email"
+                      placeholder="Enter your email address"
+                      value={heroEmail}
+                      onChange={(e) => setHeroEmail(e.target.value)}
+                      className="flex-1"
+                      data-testid="input-hero-email"
+                    />
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="gap-2 whitespace-nowrap"
+                      disabled={heroMutation.isPending}
+                      data-testid="button-hero-signup"
+                    >
+                      {heroMutation.isPending ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <>
+                          Request Early Access
+                          <ArrowRight className="h-5 w-5" />
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                  {heroError && (
+                    <p className="text-sm text-destructive" data-testid="hero-error-message">{heroError}</p>
+                  )}
+                  <p className="text-xs text-muted-foreground">
+                    Join the waitlist for early access. No spam, unsubscribe anytime.
+                  </p>
+                </form>
+              )}
 
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Shield className="h-5 w-5 text-primary" />
