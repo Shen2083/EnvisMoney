@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { Logo } from "./logo";
-import { Link } from "wouter";
+
 
 export function Navigation() {
   const scrollToSection = (id: string) => {
@@ -19,14 +19,6 @@ export function Navigation() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <ThemeToggle />
-            <Link href="/pricing">
-              <Button variant="outline" size="sm" className="sm:hidden" data-testid="button-preorder-nav-mobile">
-                Pre-order
-              </Button>
-              <Button variant="outline" className="hidden sm:inline-flex" data-testid="button-preorder-nav">
-                Pre-order
-              </Button>
-            </Link>
             <Button
               size="sm"
               className="sm:hidden"
