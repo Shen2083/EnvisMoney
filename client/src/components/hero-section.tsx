@@ -1,8 +1,56 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, Shield, CheckCircle, Loader2 } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import heroImage from "@assets/generated_images/UK_family_using_tablet_together_f0a9567d.png";
 
 export function HeroSection() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const mutation = useMutation({
+    mutationFn: async (emailAddress: string) => {
+      const res = await apiRequest("POST", "/api/waitlist", {
+        name: "",
+        email: emailAddress,
+        familySize: "2",
+        interests: "Signed up via hero section",
+      });
+      return await res.json();
+    },
+    onSuccess: () => {
+      setSubmitted(true);
+      setError("");
+    },
+    onError: (err: any) => {
+      const msg = err?.message || "Something went wrong. Please try again.";
+      try {
+        const match = msg.match(/\d+:\s*({.*})/);
+        if (match) {
+          const parsed = JSON.parse(match[1]);
+          setError(parsed.error || msg);
+        } else {
+          setError(msg);
+        }
+      } catch {
+        setError(msg);
+      }
+    },
+  });
+
+  const handleQuickSignup = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    mutation.mutate(email);
+  };
+
   const scrollToWaitlist = () => {
     const element = document.getElementById("waitlist");
     if (element) {
@@ -26,16 +74,49 @@ export function HeroSection() {
               </p>
             </div>
 
+            {submitted ? (
+              <div className="flex items-center gap-3 p-4 rounded-md bg-success/10 text-success" data-testid="hero-success-message">
+                <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                <span className="font-medium">You're on the list! We'll be in touch soon.</span>
+              </div>
+            ) : (
+              <form onSubmit={handleQuickSignup} className="space-y-3">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="flex-1"
+                    data-testid="input-hero-email"
+                  />
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="gap-2 whitespace-nowrap"
+                    disabled={mutation.isPending}
+                    data-testid="button-hero-signup"
+                  >
+                    {mutation.isPending ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <>
+                        Request Early Access
+                        <ArrowRight className="h-5 w-5" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+                {error && (
+                  <p className="text-sm text-destructive" data-testid="hero-error-message">{error}</p>
+                )}
+                <p className="text-xs text-muted-foreground">
+                  Join the waitlist for early access. No spam, unsubscribe anytime.
+                </p>
+              </form>
+            )}
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                onClick={scrollToWaitlist}
-                className="text-base gap-2"
-                data-testid="button-join-waitlist-hero"
-              >
-                Request Early Access
-                <ArrowRight className="h-5 w-5" />
-              </Button>
               <Button
                 size="lg"
                 variant="outline"
@@ -49,7 +130,7 @@ export function HeroSection() {
 
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Shield className="h-5 w-5 text-primary" />
-              <span>FCA-compliant • Bank-level security • Your data stays private</span>
+              <span>FCA-aligned principles • Bank-level security • Your data stays private</span>
             </div>
           </div>
 
