@@ -167,7 +167,7 @@ export default function Home() {
                       placeholder="Enter your email address"
                       value={heroEmail}
                       onChange={(e) => setHeroEmail(e.target.value)}
-                      className="flex-1"
+                      className="flex-1 min-h-10"
                       data-testid="input-hero-email"
                     />
                     <Button
