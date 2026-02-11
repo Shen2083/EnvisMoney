@@ -1,11 +1,24 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
+import fs from "fs";
+import path from "path";
 import { storage } from "./storage";
 import { insertWaitlistSchema, insertBlogPostSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
 import { getUncachableStripeClient, getStripePublishableKey } from "./stripeClient";
 import { db } from "./db";
 import { sql } from "drizzle-orm";
+
+const SITE_URL = "https://envis.money";
+
+function escapeHtmlAttr(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
 
 // Simple authentication middleware for admin endpoints
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
@@ -345,6 +358,104 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error deleting blog post:", error);
       res.status(500).json({ error: "Failed to delete blog post" });
+    }
+  });
+
+  // Dynamic sitemap.xml
+  app.get("/sitemap.xml", async (req, res) => {
+    try {
+      const posts = await storage.getBlogPosts(true);
+      const today = new Date().toISOString().split("T")[0];
+
+      const staticPages = [
+        { loc: "/", priority: "1.0", changefreq: "weekly" },
+        { loc: "/blog", priority: "0.8", changefreq: "daily" },
+        { loc: "/pricing", priority: "0.7", changefreq: "monthly" },
+        { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
+        { loc: "/terms", priority: "0.3", changefreq: "yearly" },
+      ];
+
+      let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+      xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+      for (const page of staticPages) {
+        xml += `  <url>\n`;
+        xml += `    <loc>${SITE_URL}${page.loc}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
+        xml += `    <priority>${page.priority}</priority>\n`;
+        xml += `  </url>\n`;
+      }
+
+      for (const post of posts) {
+        const lastmod = new Date(post.updatedAt).toISOString().split("T")[0];
+        xml += `  <url>\n`;
+        xml += `    <loc>${SITE_URL}/blog/${post.slug}</loc>\n`;
+        xml += `    <lastmod>${lastmod}</lastmod>\n`;
+        xml += `    <changefreq>monthly</changefreq>\n`;
+        xml += `    <priority>0.6</priority>\n`;
+        xml += `  </url>\n`;
+      }
+
+      xml += `</urlset>`;
+
+      res.set("Content-Type", "application/xml");
+      res.send(xml);
+    } catch (error) {
+      console.error("Error generating sitemap:", error);
+      res.status(500).send("Error generating sitemap");
+    }
+  });
+
+  // Blog post meta tag injection for SEO crawlers
+  app.get("/blog/:slug", async (req, res, next) => {
+    try {
+      const post = await storage.getBlogPostBySlug(req.params.slug);
+      if (!post || !post.published) {
+        return next();
+      }
+
+      const postUrl = `${SITE_URL}/blog/${post.slug}`;
+      const ogImage = `${SITE_URL}/og-image.png`;
+      const safeTitle = escapeHtmlAttr(post.title);
+      const safeExcerpt = escapeHtmlAttr(post.excerpt);
+      const fullTitle = `${safeTitle} | Envis Blog`;
+
+      let htmlPath: string;
+      if (app.get("env") === "development") {
+        htmlPath = path.resolve(import.meta.dirname, "..", "client", "index.html");
+      } else {
+        htmlPath = path.resolve(import.meta.dirname, "public", "index.html");
+      }
+
+      let html = await fs.promises.readFile(htmlPath, "utf-8");
+
+      const replaceOrInsert = (src: string, pattern: RegExp, replacement: string): string => {
+        if (pattern.test(src)) {
+          return src.replace(pattern, replacement);
+        }
+        return src.replace("</head>", `    ${replacement}\n  </head>`);
+      };
+
+      html = html.replace(/<title>.*?<\/title>/, `<title>${fullTitle}</title>`);
+      html = replaceOrInsert(html, /<meta name="description"[^>]*>/, `<meta name="description" content="${safeExcerpt}" />`);
+      html = replaceOrInsert(html, /<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${postUrl}" />`);
+      html = replaceOrInsert(html, /<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${safeTitle}" />`);
+      html = replaceOrInsert(html, /<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${safeExcerpt}" />`);
+      html = replaceOrInsert(html, /<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${postUrl}" />`);
+      html = replaceOrInsert(html, /<meta property="og:type"[^>]*>/, `<meta property="og:type" content="article" />`);
+      html = replaceOrInsert(html, /<meta property="og:image" content="[^"]*"[^>]*>/, `<meta property="og:image" content="${ogImage}" />`);
+      html = replaceOrInsert(html, /<meta property="og:site_name"[^>]*>/, `<meta property="og:site_name" content="Envis" />`);
+      html = replaceOrInsert(html, /<meta property="og:locale"[^>]*>/, `<meta property="og:locale" content="en_GB" />`);
+      html = replaceOrInsert(html, /<meta name="twitter:card"[^>]*>/, `<meta name="twitter:card" content="summary_large_image" />`);
+      html = replaceOrInsert(html, /<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${safeTitle}" />`);
+      html = replaceOrInsert(html, /<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${safeExcerpt}" />`);
+      html = replaceOrInsert(html, /<meta name="twitter:image" content="[^"]*"[^>]*>/, `<meta name="twitter:image" content="${ogImage}" />`);
+
+      res.status(200).set({ "Content-Type": "text/html" }).send(html);
+    } catch (error) {
+      console.error("Error injecting blog meta tags:", error);
+      next();
     }
   });
 
