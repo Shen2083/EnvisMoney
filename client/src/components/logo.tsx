@@ -1,14 +1,22 @@
+import { useLocation } from "wouter";
+
 export function Logo({ className = "h-8 w-auto" }: { className?: string }) {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const [location, setLocation] = useLocation();
+
+  const handleClick = () => {
+    if (location === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      setLocation("/");
+    }
   };
 
   return (
     <button 
-      onClick={scrollToTop} 
+      onClick={handleClick} 
       className="flex items-center gap-2.5 cursor-pointer"
       data-testid="button-logo-home"
-      aria-label="Scroll to top"
+      aria-label="Go to homepage"
     >
       <svg
         viewBox="0 0 36 36"
