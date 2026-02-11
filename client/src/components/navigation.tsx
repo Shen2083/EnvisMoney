@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { Logo } from "./logo";
@@ -18,6 +19,11 @@ export function Navigation() {
           <Logo />
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <Link href="/blog">
+              <Button variant="ghost" size="sm" data-testid="link-blog-nav">
+                Blog
+              </Button>
+            </Link>
             <ThemeToggle />
             <Button
               size="sm"

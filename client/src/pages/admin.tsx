@@ -4,7 +4,7 @@ import { Link, useLocation } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, Download, Users, LogOut } from "lucide-react";
+import { ArrowLeft, Download, Users, LogOut, FileText } from "lucide-react";
 import type { Waitlist } from "@shared/schema";
 
 export default function AdminDashboard() {
@@ -97,7 +97,7 @@ export default function AdminDashboard() {
             </Button>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
@@ -134,6 +134,26 @@ export default function AdminDashboard() {
                 </Button>
                 <p className="text-xs text-muted-foreground mt-2">
                   Export all entries to spreadsheet
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Blog Manager
+                </CardTitle>
+                <FileText className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <Link href="/admin/blog">
+                  <Button className="w-full gap-2" data-testid="button-manage-blog">
+                    <FileText className="h-4 w-4" />
+                    Manage Blog Posts
+                  </Button>
+                </Link>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Create and publish blog content
                 </p>
               </CardContent>
             </Card>

@@ -20,6 +20,14 @@ Preferred communication style: Simple, everyday language.
 - **Hero Messaging Updated:** New tagline focusing on couples and invisible labour recognition
 - **Stripe Products:** Monthly and Annual products seeded with `server/seed-billing-products.ts`
 
+### Blog & CMS (February 2026):
+- **Blog Section:** Public blog at /blog with individual post pages at /blog/:slug
+- **Admin CMS:** Blog management at /admin/blog (behind existing admin auth)
+- **Features:** Create, edit, delete, publish/unpublish posts. Markdown content support.
+- **Database:** blog_posts table with title, slug, excerpt, content, published status, timestamps
+- **Navigation:** Blog link added to main navigation bar
+- **Admin Dashboard:** "Manage Blog Posts" card added to admin dashboard
+
 ### Messaging Clarifications (October 2025):
 - **Read-Only Access Clarification:** Updated homepage to clearly explain that Envis operates with read-only access by default for insights and recommendations. Money movement features (like automated transfers to savings) require separate explicit permission for Payment Initiation Services (PIS). This resolves the apparent contradiction between "read-only access" and "sweeping surplus cash to savings."
 - **Reduced "AI" Buzzword:** Softened AI language throughout the site, changing "AI-powered" to "intelligent" and removing unnecessary "AI" mentions. Focus is now on what the product does, not the underlying technology.
