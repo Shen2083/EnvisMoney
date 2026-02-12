@@ -55,6 +55,11 @@ export function WaitlistForm() {
     onSuccess: () => {
       setIsSubmitted(true);
       setErrorMessage("");
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "sign_up", {
+          method: "waitlist_form",
+        });
+      }
     },
     onError: (error: any) => {
       const errorText = error?.message || "Failed to join waitlist. Please try again.";

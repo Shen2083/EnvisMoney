@@ -29,6 +29,11 @@ export default function Home() {
     onSuccess: () => {
       setHeroSubmitted(true);
       setHeroError("");
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "sign_up", {
+          method: "waitlist_hero",
+        });
+      }
     },
     onError: (err: any) => {
       const msg = err?.message || "Something went wrong. Please try again.";
