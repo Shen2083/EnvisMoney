@@ -1,8 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
-import { Check, Shield, ArrowLeft, Loader2 } from "lucide-react";
+import { Check, Shield, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 
 const unifiedFeatures = [
@@ -39,9 +37,8 @@ const pricingPlans = [
     price: 19.99,
     period: "/month",
     subtext: "Flexible, cancel anytime.",
-    buttonText: "Start Monthly",
+    buttonText: "Join Waitlist",
     isPopular: false,
-    interval: "month",
   },
   {
     id: "annual",
@@ -49,29 +46,12 @@ const pricingPlans = [
     price: 134.99,
     period: "/year",
     subtext: "Save 44% (Pay once a year).",
-    buttonText: "Start Annual",
+    buttonText: "Join Waitlist",
     isPopular: true,
-    interval: "year",
   },
 ];
 
 export default function PricingPage() {
-  const checkoutMutation = useMutation({
-    mutationFn: async (planId: string) => {
-      const response = await apiRequest('POST', '/api/checkout', { planId });
-      return response.json();
-    },
-    onSuccess: (data) => {
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    },
-  });
-
-  const handlePreOrder = (planId: string) => {
-    checkoutMutation.mutate(planId);
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
@@ -91,8 +71,8 @@ export default function PricingPage() {
 
         <div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto mb-16">
           {pricingPlans.map((plan) => (
-            <Card 
-              key={plan.id} 
+            <Card
+              key={plan.id}
               className={`relative p-8 ${plan.isPopular ? 'border-primary border-2 shadow-lg' : ''}`}
               data-testid={`card-plan-${plan.id}`}
             >
@@ -106,7 +86,7 @@ export default function PricingPage() {
 
               <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold mb-4">{plan.name}</h2>
-                
+
                 <div className="mb-2">
                   <span className="text-4xl font-bold">£{plan.price.toFixed(2)}</span>
                   <span className="text-muted-foreground">{plan.period}</span>
@@ -115,23 +95,16 @@ export default function PricingPage() {
                 <p className="text-sm text-muted-foreground">{plan.subtext}</p>
               </div>
 
-              <Button 
-                className="w-full" 
-                size="lg"
-                variant={plan.isPopular ? "default" : "outline"}
-                onClick={() => handlePreOrder(plan.id)}
-                disabled={checkoutMutation.isPending}
-                data-testid={`button-preorder-${plan.id}`}
-              >
-                {checkoutMutation.isPending ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                    Processing...
-                  </>
-                ) : (
-                  plan.buttonText
-                )}
-              </Button>
+              <Link href="/#waitlist">
+                <Button
+                  className="w-full"
+                  size="lg"
+                  variant={plan.isPopular ? "default" : "outline"}
+                  data-testid={`button-preorder-${plan.id}`}
+                >
+                  {plan.buttonText}
+                </Button>
+              </Link>
             </Card>
           ))}
         </div>
@@ -154,11 +127,11 @@ export default function PricingPage() {
         <div className="mt-12 text-center">
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4">
             <Shield className="h-4 w-4 text-primary" />
-            <span>Secure payment powered by Stripe</span>
+            <span>Payments coming soon</span>
           </div>
           <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-            Your subscription starts when we launch. You can cancel anytime before launch for a full refund. 
-            All payments are processed securely through Stripe.
+            Join the waitlist to be notified when we launch. Early supporters will get priority access
+            to our family financial coaching platform.
           </p>
         </div>
       </div>
