@@ -147,7 +147,7 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative pt-16 bg-gradient-to-br from-background via-background to-primary/5">
+      <section className="relative pt-16 overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="space-y-6 lg:space-y-8">
@@ -211,8 +211,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative lg:pl-8">
-              <div className="relative h-[500px] lg:h-[550px]" data-testid="hero-graphic">
+            <div className="relative lg:pl-8 hidden lg:block">
+              <div className="relative h-[500px] lg:h-[550px] overflow-hidden" data-testid="hero-graphic">
                 {/* Subtle gradient background */}
                 <div className="absolute inset-0 overflow-hidden opacity-40">
                   <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-primary/10 to-transparent rounded-full blur-3xl"></div>
