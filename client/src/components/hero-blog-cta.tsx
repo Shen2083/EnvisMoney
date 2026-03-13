@@ -15,9 +15,9 @@ export function HeroBlogCTA() {
   }
 
   return (
-    <Link href={`/blog/${latestPost.slug}`} className="block w-fit max-w-full">
-      <div 
-        className="flex items-center rounded-full transition-all duration-200 group cursor-pointer overflow-hidden"
+    <Link href={`/blog/${latestPost.slug}`}>
+      <div
+        className="flex items-center rounded-full transition-all duration-200 group cursor-pointer"
         style={{
           paddingLeft: "10px",
           paddingRight: "16px",
@@ -25,6 +25,8 @@ export function HeroBlogCTA() {
           paddingBottom: "8px",
           gap: "10px",
           backgroundColor: "rgba(232, 146, 58, 0.07)",
+          maxWidth: "min(100%, calc(100vw - 48px))",
+          overflow: "hidden",
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(232, 146, 58, 0.12)";
@@ -35,7 +37,7 @@ export function HeroBlogCTA() {
         data-testid="hero-blog-cta"
       >
         {/* New Badge */}
-        <span 
+        <span
           className="flex-shrink-0 font-bold uppercase text-white"
           style={{
             backgroundColor: "#E8923A",
@@ -48,9 +50,9 @@ export function HeroBlogCTA() {
         >
           New
         </span>
-        
+
         {/* Post Title */}
-        <span 
+        <span
           className="font-medium transition-colors duration-200 group-hover:text-orange-600 min-w-0 truncate"
           style={{
             fontSize: "14px",
@@ -61,9 +63,9 @@ export function HeroBlogCTA() {
         >
           {latestPost.title}
         </span>
-        
+
         {/* Arrow */}
-        <ArrowRight 
+        <ArrowRight
           className="flex-shrink-0"
           style={{
             color: "#E8923A",
