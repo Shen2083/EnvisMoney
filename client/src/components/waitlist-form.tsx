@@ -108,7 +108,7 @@ export function WaitlistForm() {
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
                   <Input
@@ -126,7 +126,7 @@ export function WaitlistForm() {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
                   <Input

@@ -1,4 +1,4 @@
-import { Mail, Lock, Shield } from "lucide-react";
+import { Mail, Lock, Shield, ShieldCheck, Building } from "lucide-react";
 import { Link } from "wouter";
 import { Logo } from "./logo";
 
@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="border-t bg-card/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid gap-8 sm:grid-cols-3 md:gap-12">
+        <div className="grid gap-8 md:grid-cols-3 md:gap-12">
           <div className="space-y-4">
             <Logo />
             <p className="text-sm text-muted-foreground">
@@ -31,34 +31,50 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-privacy-footer">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-terms-footer">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
+          <div className="grid grid-cols-2 sm:grid-cols-1 gap-8 sm:gap-0">
+            <div>
+              <h4 className="font-semibold mb-4">Legal</h4>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-privacy-footer">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-terms-footer">
+                    Terms of Service
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="sm:mt-8">
+              <h4 className="font-semibold mb-4">Security</h4>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <Lock className="h-4 w-4 text-primary" />
+                  <span>Bank-Level Encryption</span>
+                </li>
+                <li className="flex items-center gap-2 text-muted-foreground">
+                  <Shield className="h-4 w-4 text-primary" />
+                  <span>FCA-Aligned Principles</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Security</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Lock className="h-4 w-4 text-primary" />
-                <span>Bank-Level Encryption</span>
-              </li>
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <Shield className="h-4 w-4 text-primary" />
-                <span>FCA-Aligned Principles</span>
-              </li>
-            </ul>
+          <div className="space-y-4">
+            <h4 className="font-semibold mb-4">Trust Badges</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col items-center p-3 rounded-lg bg-background/50 border border-border/50">
+                <ShieldCheck className="h-6 w-6 text-primary mb-2" />
+                <span className="text-[10px] font-medium text-center">GDPR Compliant</span>
+              </div>
+              <div className="flex flex-col items-center p-3 rounded-lg bg-background/50 border border-border/50">
+                <Building className="h-6 w-6 text-primary mb-2" />
+                <span className="text-[10px] font-medium text-center">FCA Aligned</span>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -13,11 +13,13 @@ export default function BlogPostPage() {
 
   const { data, isLoading, error } = useQuery<{ post: BlogPost }>({
     queryKey: ["/api/blog", params.slug],
+    enabled: !!params.slug,
   });
 
   const post = data?.post;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (post) {
       document.title = `${post.title} | Envis Blog`;
     } else {
@@ -53,7 +55,8 @@ export default function BlogPostPage() {
             <div className="text-center py-16" data-testid="text-not-found">
               <h2 className="text-2xl font-bold mb-4">Post not found</h2>
               <p className="text-muted-foreground mb-6">
-                This blog post may have been removed or doesn't exist.
+                We couldn't find the article you're looking for. It might have been moved or deleted.
+                {error && <span className="block mt-4 text-xs opacity-50">Debug: {(error as Error).message}</span>}
               </p>
               <Link href="/blog">
                 <Button>View All Posts</Button>
@@ -79,7 +82,9 @@ export default function BlogPostPage() {
 
               <div className="border-t pt-8">
                 <div className="prose prose-neutral dark:prose-invert max-w-none" data-testid="blog-content">
-                  <Markdown>{post.content}</Markdown>
+                  <Markdown>
+                    {post.content}
+                  </Markdown>
                 </div>
               </div>
 

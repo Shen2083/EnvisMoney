@@ -1,0 +1,168 @@
+# Envis.money Landing Page Update — Replit Prompt
+
+## Overview
+
+Update the existing Envis.money landing page to add section-based navigation links in the top nav, a fully responsive mobile experience with a hamburger menu, and polish the Blog link styling. All existing functionality (dark mode toggle, email signup, FAQ accordions, waitlist form) must continue to work.
+
+---
+
+## 1. Navigation — Section Links & Styling
+
+**Current state:** The top nav has the Envis logo (left), a "Blog" text link, a dark mode toggle icon, and a "Request Early Access" CTA button (right).
+
+**Required changes:**
+
+- Add anchor links in the nav for each major page section: **Features**, **Research**, **Security**, **FAQ**
+- These should smooth-scroll to the corresponding section IDs on the page (`scroll-behavior: smooth`)
+- Style the **Blog** link so it looks like a proper nav link — it currently looks like plain text. Give it the same font weight, hover state, colour, and spacing as the new section links
+- On desktop, show all nav links inline in this order: `Features | Research | Security | FAQ | Blog`
+- The dark mode toggle and "Request Early Access" CTA button should remain to the right of the nav links
+- Make the nav sticky/fixed on scroll so users always have access to navigation
+- Add a subtle shadow or border-bottom to the nav when scrolled (to visually separate it from content)
+
+---
+
+## 2. Section IDs
+
+Add these `id` attributes to the corresponding page sections so the nav anchor links work:
+
+| Nav Link   | Section ID   | Target Section Heading                  |
+|------------|-------------|------------------------------------------|
+| Features   | `#features` | "Our Five Proprietary Modules"           |
+| Research   | `#research` | "Backed by Science & Research"           |
+| Security   | `#security` | "Your Security is Our Priority"          |
+| FAQ        | `#faq`      | "Frequently Asked Questions"             |
+
+---
+
+## 3. Mobile Hamburger Menu
+
+**Breakpoint:** Collapse nav links into a hamburger menu at `768px` and below.
+
+- Use a clean hamburger icon (three horizontal lines) that toggles to an X when open
+- Menu should slide down from the nav or appear as a full-width overlay
+- Menu contents (in order): Features, Research, Security, FAQ, Blog links — each on its own row
+- "Request Early Access" button should appear prominently at the bottom of the mobile menu
+- Dark mode toggle should remain accessible in the mobile menu
+- Menu should close automatically when any link is tapped (since they smooth-scroll to sections)
+- Prevent body scroll when menu is open
+
+---
+
+## 4. Mobile Responsive Layout — Section by Section
+
+Ensure all sections are fully responsive. Use the following breakpoints:
+- **Desktop:** 1024px+
+- **Tablet:** 768px–1023px
+- **Mobile:** below 768px
+
+### 4.1 Hero Section
+
+**Desktop (current):** Headline + subtext + email input on the left; 5 feature icon cards in a 3+2 grid on the right.
+
+**Mobile:**
+- Stack everything vertically: headline → subtext → email input/CTA → feature icon cards
+- Email input field and "Request Early Access" CTA button should be full-width (stacked, not side by side)
+- The 5 feature icon cards should display in a horizontally scrollable row or a 2-column grid
+- Trust badges line ("FCA-aligned principles • Bank-level security • Your data stays private") should wrap naturally
+
+### 4.2 Stats Section ("Why managing money together feels so hard")
+
+**Desktop (current):** Three stat cards (72%, 52%, 7-10) side by side.
+
+**Mobile:**
+- Stack the three stat cards vertically, each full-width
+- The "key insight" callout box should have appropriate padding (16–20px horizontal)
+- Stats numbers should remain large and prominent
+
+### 4.3 Five Proprietary Modules Section
+
+**Desktop (current):** Top row has 3 cards, bottom row has 2 cards (centred).
+
+**Mobile:**
+- Single-column layout — each card stacked vertically, full-width
+- Each card maintains: icon → title → subtitle (orange text) → description paragraph
+- Comfortable spacing between cards (16–24px gap)
+
+### 4.4 Backed by Science & Research Section
+
+**Desktop (current):** Centred text block with callout card.
+
+**Mobile:**
+- Proper horizontal padding (16–20px)
+- Text should remain centred and readable
+- Callout card should have slightly reduced padding
+
+### 4.5 Security Section ("Your Security is Our Priority")
+
+**Desktop (current):** 4 security badges in a single row (Bank-Level Encryption, FCA-Aligned Principles, Read-Only Access, GDPR Compliant).
+
+**Mobile:**
+- Display as a 2×2 grid
+- Each badge: icon on top, label below, centred
+
+### 4.6 FAQ Section
+
+**Desktop (current):** Accordion-style list of questions.
+
+**Mobile:**
+- Accordion items should be full-width with comfortable tap targets (minimum 48px height for the clickable area)
+- Text should have proper padding so it doesn't touch screen edges
+- Expanded answers should have readable line-height
+
+### 4.7 Final CTA / Waitlist Section ("Ready to Transform Your Relationship with Money?")
+
+**Desktop (current):** Heading + subtext, then a form with Full Name and Email Address side by side, Family Size dropdown, optional textarea, and CTA button.
+
+**Mobile:**
+- Full Name and Email Address fields should stack vertically (each full-width)
+- Family Size dropdown: full-width
+- Textarea: full-width
+- "Request Early Access" CTA button: full-width
+- Adequate spacing between form fields (12–16px)
+
+### 4.8 Footer
+
+**Desktop (current):** Three columns — Envis info (left), Legal links (centre), Security badges (right).
+
+**Mobile:**
+- Stack all three columns vertically
+- Envis info first, then Legal, then Security
+- "Important Information" disclaimer text should have proper padding and readable font size
+- Copyright line at the bottom
+
+---
+
+## 5. General Polish
+
+- **Smooth scrolling:** Add `scroll-behavior: smooth` to `html` element
+- **Nav link hover state:** Subtle colour transition to Envis orange (`#E8883C`) or underline on hover
+- **Active section highlighting (optional but nice):** As the user scrolls, highlight the corresponding nav link for the section currently in view (using Intersection Observer)
+- **Scroll offset:** When navigating to a section via anchor link, account for the sticky nav height so the section heading isn't hidden behind the nav (use `scroll-margin-top` or `scroll-padding-top`)
+- **Consistent spacing:** Ensure uniform vertical spacing between sections across all breakpoints
+- **Touch-friendly:** All interactive elements (buttons, links, accordion headers, form fields) should have minimum 44px touch targets on mobile
+- **Font sizes:** Ensure headings scale down appropriately on mobile (e.g., hero headline should be smaller on mobile but still prominent)
+
+---
+
+## 6. Technical Notes
+
+- Do NOT break any existing functionality: dark mode toggle, hero email signup, FAQ accordions, waitlist form submission
+- Maintain the existing colour scheme: Envis blue (`#1A56DB` or similar), Envis orange (`#E8883C`), white/light grey backgrounds
+- Keep all existing content and copy — this is a layout and navigation update, not a content rewrite
+- Use CSS media queries for responsive layout. If using a framework (e.g., Tailwind), use its responsive utilities
+- The hamburger menu can be implemented with vanilla JS or whatever framework the project uses
+- Test on common mobile widths: 375px (iPhone SE/standard), 390px (iPhone 14), 414px (iPhone Plus sizes)
+
+---
+
+## Summary of Changes
+
+1. ✅ Add Features, Research, Security, FAQ anchor links to top nav
+2. ✅ Fix Blog link styling to match other nav links
+3. ✅ Make nav sticky on scroll
+4. ✅ Add hamburger menu for mobile (≤768px)
+5. ✅ Add section IDs for smooth-scroll navigation
+6. ✅ Make all page sections fully responsive
+7. ✅ Account for sticky nav height in scroll offset
+8. ✅ Preserve all existing functionality

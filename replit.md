@@ -22,10 +22,11 @@ Preferred communication style: Simple, everyday language.
 
 ### Blog & CMS (February 2026):
 - **Blog Section:** Public blog at /blog with individual post pages at /blog/:slug
+- **Blog Layout:** 3-column responsive card grid with pagination (6 posts per page)
 - **Admin CMS:** Blog management at /admin/blog (behind existing admin auth)
 - **Features:** Create, edit, delete, publish/unpublish posts. Markdown content support.
 - **Database:** blog_posts table with title, slug, excerpt, content, published status, timestamps
-- **Navigation:** Blog link added to main navigation bar
+- **Navigation:** Blog link added to main navigation bar, updated "Request Early Access" button to handle cross-page navigation back to home waitlist section.
 - **Admin Dashboard:** "Manage Blog Posts" card added to admin dashboard
 
 ### Messaging Clarifications (October 2025):

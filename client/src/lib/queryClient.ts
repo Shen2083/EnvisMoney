@@ -37,7 +37,10 @@ export const getQueryFn: <T>(options: {
       headers["Authorization"] = `Bearer ${adminToken}`;
     }
 
-    const res = await fetch(queryKey.join("/") as string, {
+    const path = queryKey.join("/");
+    const url = path.startsWith("/") ? path : `/${path}`;
+
+    const res = await fetch(url, {
       credentials: "include",
       headers,
     });

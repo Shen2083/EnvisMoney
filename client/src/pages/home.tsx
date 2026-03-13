@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigation } from "@/components/navigation";
+import { HeroBlogCTA } from "@/components/hero-blog-cta";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -151,6 +152,9 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="space-y-6 lg:space-y-8">
               <div className="space-y-4">
+                <div style={{ marginBottom: "14px" }}>
+                  <HeroBlogCTA />
+                </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                   Your Family's Financial Partner, Finally.
                 </h1>
@@ -172,13 +176,13 @@ export default function Home() {
                       placeholder="Enter your email address"
                       value={heroEmail}
                       onChange={(e) => setHeroEmail(e.target.value)}
-                      className="flex-1 min-h-10"
+                      className="w-full sm:flex-1 min-h-10"
                       data-testid="input-hero-email"
                     />
                     <Button
                       type="submit"
                       size="lg"
-                      className="gap-2 whitespace-nowrap"
+                      className="w-full sm:w-auto gap-2 whitespace-nowrap"
                       disabled={heroMutation.isPending}
                       data-testid="button-hero-signup"
                     >
@@ -201,7 +205,7 @@ export default function Home() {
                 </form>
               )}
 
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
                 <Shield className="h-5 w-5 text-primary" />
                 <span>FCA-aligned principles • Bank-level security • Your data stays private</span>
               </div>
@@ -219,14 +223,14 @@ export default function Home() {
                 <div className="relative h-full flex items-center justify-center px-4" style={{ zIndex: 2 }}>
                   <div className="w-full max-w-lg">
                     {/* Simple 5-card grid with even distribution */}
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       {/* Row 1: 3 cards */}
                       <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
                         <div className="flex flex-col items-center gap-2">
                           <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                             <Wallet className="h-6 w-6 text-primary" strokeWidth={2} />
                           </div>
-                          <span className="text-xs font-medium text-center">Mine, Yours, Ours</span>
+                          <span className="text-[10px] md:text-xs font-medium text-center">Mine, Yours, Ours</span>
                         </div>
                       </Card>
 
@@ -235,7 +239,7 @@ export default function Home() {
                           <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                             <Scale className="h-6 w-6 text-primary" strokeWidth={2} />
                           </div>
-                          <span className="text-xs font-medium text-center">Fairness Engine</span>
+                          <span className="text-[10px] md:text-xs font-medium text-center">Fairness Engine</span>
                         </div>
                       </Card>
 
@@ -244,28 +248,25 @@ export default function Home() {
                           <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                             <BarChart3 className="h-6 w-6 text-primary" strokeWidth={2} />
                           </div>
-                          <span className="text-xs font-medium text-center">Progress Tracking</span>
+                          <span className="text-[10px] md:text-xs font-medium text-center">Progress Tracking</span>
                         </div>
                       </Card>
-                    </div>
 
-                    {/* Row 2: 2 cards centered */}
-                    <div className="flex justify-center gap-4 mt-4">
-                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 w-[calc(33.333%-0.5rem)]">
+                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
                         <div className="flex flex-col items-center gap-2">
                           <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                             <Compass className="h-6 w-6 text-primary" strokeWidth={2} />
                           </div>
-                          <span className="text-xs font-medium text-center">Values Mediation</span>
+                          <span className="text-[10px] md:text-xs font-medium text-center">Values Mediation</span>
                         </div>
                       </Card>
 
-                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 w-[calc(33.333%-0.5rem)]">
+                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
                         <div className="flex flex-col items-center gap-2">
                           <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                             <MessageCircle className="h-6 w-6 text-primary" strokeWidth={2} />
                           </div>
-                          <span className="text-xs font-medium text-center">Proactive Coaching</span>
+                          <span className="text-[10px] md:text-xs font-medium text-center">Proactive Coaching</span>
                         </div>
                       </Card>
                     </div>
@@ -287,21 +288,21 @@ export default function Home() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-3 mb-12">
-            <Card className="p-8 text-center space-y-4 bg-card/80" data-testid="problem-shame">
+            <Card className="p-8 text-center space-y-4 bg-card/80 w-full" data-testid="problem-shame">
               <div className="text-5xl md:text-6xl font-bold text-primary mb-2">72%</div>
               <p className="text-lg text-muted-foreground">
                 of couples experience shame or discomfort discussing money.
               </p>
             </Card>
 
-            <Card className="p-8 text-center space-y-4 bg-card/80" data-testid="problem-stress">
+            <Card className="p-8 text-center space-y-4 bg-card/80 w-full" data-testid="problem-stress">
               <div className="text-5xl md:text-6xl font-bold text-primary mb-2">52%</div>
               <p className="text-lg text-muted-foreground">
                 report financial stress damages their relationship.
               </p>
             </Card>
 
-            <Card className="p-8 text-center space-y-4 bg-card/80" data-testid="problem-products">
+            <Card className="p-8 text-center space-y-4 bg-card/80 w-full" data-testid="problem-products">
               <div className="text-5xl md:text-6xl font-bold text-primary mb-2">7-10</div>
               <p className="text-lg text-muted-foreground">
                 different financial products couples juggle without a full-picture view.
@@ -320,7 +321,7 @@ export default function Home() {
       </section>
 
       {/* Solution / Core Modules Section */}
-      <section id="how-it-works" className="py-16 md:py-24">
+      <section id="features" className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -360,7 +361,7 @@ export default function Home() {
             {modules.slice(3, 5).map((module, index) => (
               <Card
                 key={index + 3}
-                className="group p-8 hover-elevate transition-colors duration-300 border-border/50 hover:border-primary/20 md:w-[calc(33.333%-0.5rem)]"
+                className="group p-8 hover-elevate transition-colors duration-300 border-border/50 hover:border-primary/20 w-full md:w-[calc(33.333%-0.5rem)]"
                 data-testid={`module-${index + 3}`}
               >
                 <div className="space-y-4">
@@ -382,7 +383,7 @@ export default function Home() {
       </section>
 
       {/* Social Proof / Validation Section */}
-      <section className="py-16 md:py-24 bg-card/30">
+      <section id="research" className="py-16 md:py-24 bg-card/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -404,7 +405,7 @@ export default function Home() {
       </section>
 
       {/* Trust & Security */}
-      <section className="py-16 md:py-24">
+      <section id="security" className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -412,7 +413,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 grid-cols-2 md:grid-cols-4">
             {trustPoints.map((point, index) => (
               <div
                 key={index}
@@ -422,7 +423,7 @@ export default function Home() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
                   <point.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-lg font-semibold">{point.title}</h3>
+                <h3 className="text-sm md:text-lg font-semibold">{point.title}</h3>
               </div>
             ))}
           </div>
@@ -430,7 +431,9 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <FAQSection />
+      <section id="faq">
+        <FAQSection />
+      </section>
 
       {/* Final CTA / Waitlist Section */}
       <section id="waitlist" className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/10">

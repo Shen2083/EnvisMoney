@@ -6,6 +6,7 @@ export function Logo({ className = "h-8 w-auto" }: { className?: string }) {
   const handleClick = () => {
     if (location === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.pushState(null, "", "/");
     } else {
       setLocation("/");
     }

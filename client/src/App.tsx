@@ -11,6 +11,7 @@ import AdminDashboard from "@/pages/admin";
 import AdminBlog from "@/pages/admin-blog";
 import AdminBlogEditor from "@/pages/admin-blog-editor";
 import PricingPage from "@/pages/pricing";
+import CheckoutSuccessPage from "@/pages/checkout-success";
 import Blog from "@/pages/blog";
 import BlogPostPage from "@/pages/blog-post";
 import NotFound from "@/pages/not-found";
@@ -27,6 +28,7 @@ function Router() {
       <Route path="/admin/blog/new" component={AdminBlogEditor} />
       <Route path="/admin/blog/edit/:id" component={AdminBlogEditor} />
       <Route path="/pricing" component={PricingPage} />
+      <Route path="/checkout/success" component={CheckoutSuccessPage} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPostPage} />
       <Route component={NotFound} />
