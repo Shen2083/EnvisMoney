@@ -150,8 +150,8 @@ export default function Home() {
       <section className="relative pt-16 overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="space-y-6 lg:space-y-8">
-              <div className="space-y-4">
+            <div className="space-y-6 lg:space-y-8 min-w-0">
+              <div className="space-y-4 min-w-0">
                 <div style={{ marginBottom: "14px" }}>
                   <HeroBlogCTA />
                 </div>

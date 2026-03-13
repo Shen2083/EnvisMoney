@@ -54,11 +54,10 @@ export function HeroBlogCTA() {
 
       {/* Post Title */}
       <span
-        className="font-medium"
+        className="font-medium text-foreground"
         style={{
           fontSize: "14px",
           fontWeight: 500,
-          color: "#2B2B2B",
           overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
