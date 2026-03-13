@@ -17,7 +17,7 @@ export function HeroBlogCTA() {
   return (
     <Link href={`/blog/${latestPost.slug}`}>
       <div 
-        className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full transition-all duration-200 group cursor-pointer"
+        className="inline-flex items-center gap-2.5 rounded-full transition-all duration-200 group cursor-pointer max-w-full"
         style={{
           paddingLeft: "10px",
           paddingRight: "16px",
@@ -51,7 +51,7 @@ export function HeroBlogCTA() {
         
         {/* Post Title */}
         <span 
-          className="font-medium transition-colors duration-200 group-hover:text-orange-600 flex-shrink-0 md:flex-shrink"
+          className="font-medium transition-colors duration-200 group-hover:text-orange-600 min-w-0"
           style={{
             fontSize: "14px",
             fontWeight: 500,
@@ -70,7 +70,6 @@ export function HeroBlogCTA() {
           className="flex-shrink-0"
           style={{
             color: "#E8923A",
-            fontSize: "14px",
             width: "14px",
             height: "14px",
           }}
