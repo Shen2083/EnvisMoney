@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
 import type { BlogPost } from "@shared/schema";
 
 export function HeroBlogCTA() {
@@ -15,65 +14,73 @@ export function HeroBlogCTA() {
   }
 
   return (
-    <Link href={`/blog/${latestPost.slug}`}>
-      <div
-        className="flex items-center rounded-full transition-all duration-200 group cursor-pointer"
+    <Link
+      href={`/blog/${latestPost.slug}`}
+      data-testid="hero-blog-cta"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        padding: "8px 16px 8px 10px",
+        backgroundColor: "rgba(232, 146, 58, 0.07)",
+        borderRadius: "100px",
+        maxWidth: "100%",
+        overflow: "hidden",
+        cursor: "pointer",
+        textDecoration: "none",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(232, 146, 58, 0.12)";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(232, 146, 58, 0.07)";
+      }}
+    >
+      {/* Badge */}
+      <span
+        className="font-bold uppercase text-white"
         style={{
-          paddingLeft: "10px",
-          paddingRight: "16px",
-          paddingTop: "8px",
-          paddingBottom: "8px",
-          gap: "10px",
-          backgroundColor: "rgba(232, 146, 58, 0.07)",
-          maxWidth: "min(100%, calc(100vw - 48px))",
-          overflow: "hidden",
+          backgroundColor: "#E8923A",
+          fontSize: "10px",
+          fontWeight: 700,
+          letterSpacing: "0.08em",
+          padding: "3px 8px",
+          borderRadius: "100px",
+          flexShrink: 0,
         }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(232, 146, 58, 0.12)";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLDivElement).style.backgroundColor = "rgba(232, 146, 58, 0.07)";
-        }}
-        data-testid="hero-blog-cta"
       >
-        {/* New Badge */}
-        <span
-          className="flex-shrink-0 font-bold uppercase text-white"
-          style={{
-            backgroundColor: "#E8923A",
-            fontSize: "10px",
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            padding: "3px 8px",
-            borderRadius: "100px",
-          }}
-        >
-          New
-        </span>
+        Latest
+      </span>
 
-        {/* Post Title */}
-        <span
-          className="font-medium transition-colors duration-200 group-hover:text-orange-600 min-w-0 truncate"
-          style={{
-            fontSize: "14px",
-            fontWeight: 500,
-            color: "#2B2B2B",
-          }}
-          data-testid="hero-blog-title"
-        >
-          {latestPost.title}
-        </span>
+      {/* Post Title */}
+      <span
+        className="font-medium"
+        style={{
+          fontSize: "14px",
+          fontWeight: 500,
+          color: "#2B2B2B",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          minWidth: 0,
+          flex: 1,
+        }}
+        data-testid="hero-blog-title"
+      >
+        {latestPost.title}
+      </span>
 
-        {/* Arrow */}
-        <ArrowRight
-          className="flex-shrink-0"
-          style={{
-            color: "#E8923A",
-            width: "14px",
-            height: "14px",
-          }}
-        />
-      </div>
+      {/* Arrow */}
+      <span
+        style={{
+          color: "#E8923A",
+          flexShrink: 0,
+          fontSize: "14px",
+          lineHeight: 1,
+        }}
+      >
+        →
+      </span>
     </Link>
   );
 }
