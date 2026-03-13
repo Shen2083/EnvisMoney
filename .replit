@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 modules = ["nodejs-20", "web", "postgresql-16"]
 run = "npm run dev"
 hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
@@ -14,6 +13,14 @@ run = ["npm", "run", "start"]
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 35835
+externalPort = 3002
+
+[[ports]]
+localPort = 43707
+externalPort = 3000
 
 [env]
 PORT = "5000"
@@ -41,14 +48,3 @@ waitForPort = 5000
 
 [agent]
 integrations = ["javascript_mem_db:1.0.0", "javascript_database:1.0.0"]
-=======
-run = "npm run dev"
-hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
-
-[env]
-PORT = "5000"
-
-[[ports]]
-localPort = 5000
-externalPort = 80
->>>>>>> 0a3f8f5a9b7dee77c45a13fbefae362f09a46ba4
