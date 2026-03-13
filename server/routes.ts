@@ -233,7 +233,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const staticPages = [
         { loc: "/", priority: "1.0", changefreq: "weekly" },
         { loc: "/blog", priority: "0.8", changefreq: "daily" },
-        { loc: "/pricing", priority: "0.7", changefreq: "monthly" },
+
         { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
         { loc: "/terms", priority: "0.3", changefreq: "yearly" },
       ];
