@@ -223,52 +223,57 @@ export default function Home() {
                 <div className="relative h-full flex items-center justify-center px-4" style={{ zIndex: 2 }}>
                   <div className="w-full max-w-lg">
                     {/* Simple 5-card grid with even distribution */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="flex flex-col gap-4">
                       {/* Row 1: 3 cards */}
-                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <Wallet className="h-6 w-6 text-primary" strokeWidth={2} />
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <Wallet className="h-6 w-6 text-primary" strokeWidth={2} />
+                            </div>
+                            <span className="text-[10px] md:text-xs font-medium text-center">Mine, Yours, Ours</span>
                           </div>
-                          <span className="text-[10px] md:text-xs font-medium text-center">Mine, Yours, Ours</span>
-                        </div>
-                      </Card>
+                        </Card>
 
-                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <Scale className="h-6 w-6 text-primary" strokeWidth={2} />
+                        <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <Scale className="h-6 w-6 text-primary" strokeWidth={2} />
+                            </div>
+                            <span className="text-[10px] md:text-xs font-medium text-center">Fairness Engine</span>
                           </div>
-                          <span className="text-[10px] md:text-xs font-medium text-center">Fairness Engine</span>
-                        </div>
-                      </Card>
+                        </Card>
 
-                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <BarChart3 className="h-6 w-6 text-primary" strokeWidth={2} />
+                        <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <BarChart3 className="h-6 w-6 text-primary" strokeWidth={2} />
+                            </div>
+                            <span className="text-[10px] md:text-xs font-medium text-center">Progress Tracking</span>
                           </div>
-                          <span className="text-[10px] md:text-xs font-medium text-center">Progress Tracking</span>
-                        </div>
-                      </Card>
+                        </Card>
+                      </div>
 
-                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <Compass className="h-6 w-6 text-primary" strokeWidth={2} />
+                      {/* Row 2: 2 cards centered */}
+                      <div className="flex justify-center gap-4">
+                        <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 w-[calc(33.333%-0.35rem)]">
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <Compass className="h-6 w-6 text-primary" strokeWidth={2} />
+                            </div>
+                            <span className="text-[10px] md:text-xs font-medium text-center">Values Mediation</span>
                           </div>
-                          <span className="text-[10px] md:text-xs font-medium text-center">Values Mediation</span>
-                        </div>
-                      </Card>
+                        </Card>
 
-                      <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20">
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <MessageCircle className="h-6 w-6 text-primary" strokeWidth={2} />
+                        <Card className="group p-4 hover-elevate transition-colors duration-300 bg-card/95 backdrop-blur-sm border border-border/50 hover:border-primary/20 w-[calc(33.333%-0.35rem)]">
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <MessageCircle className="h-6 w-6 text-primary" strokeWidth={2} />
+                            </div>
+                            <span className="text-[10px] md:text-xs font-medium text-center">Proactive Coaching</span>
                           </div>
-                          <span className="text-[10px] md:text-xs font-medium text-center">Proactive Coaching</span>
-                        </div>
-                      </Card>
+                        </Card>
+                      </div>
                     </div>
                   </div>
                 </div>
