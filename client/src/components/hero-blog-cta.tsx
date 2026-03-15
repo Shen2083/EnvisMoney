@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
+import { useState, useEffect, useRef, useCallback } from "react";
 import type { BlogPost } from "@shared/schema";
 
 export function HeroBlogCTA() {
@@ -7,15 +8,38 @@ export function HeroBlogCTA() {
     queryKey: ["api", "blog"],
   });
 
-  const latestPost = data?.posts?.[0];
+  const recentPosts = data?.posts?.slice(0, 3) ?? [];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const isPaused = useRef(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  if (!latestPost) {
+  const cycle = useCallback(() => {
+    if (isPaused.current) return;
+    setVisible(false);
+    setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % recentPosts.length);
+      setVisible(true);
+    }, 400);
+  }, [recentPosts.length]);
+
+  useEffect(() => {
+    if (recentPosts.length <= 1) return;
+    timerRef.current = setInterval(cycle, 5000);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [cycle, recentPosts.length]);
+
+  if (recentPosts.length === 0) {
     return null;
   }
 
+  const activePost = recentPosts[activeIndex] ?? recentPosts[0];
+
   return (
     <Link
-      href={`/blog/${latestPost.slug}`}
+      href={`/blog/${activePost.slug}`}
       data-testid="hero-blog-cta"
       style={{
         display: "flex",
@@ -30,9 +54,11 @@ export function HeroBlogCTA() {
         textDecoration: "none",
       }}
       onMouseEnter={(e) => {
+        isPaused.current = true;
         (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(232, 146, 58, 0.12)";
       }}
       onMouseLeave={(e) => {
+        isPaused.current = false;
         (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "rgba(232, 146, 58, 0.07)";
       }}
     >
@@ -52,7 +78,7 @@ export function HeroBlogCTA() {
         Latest
       </span>
 
-      {/* Post Title */}
+      {/* Post Title - animated */}
       <span
         className="font-medium text-foreground"
         style={{
@@ -63,10 +89,13 @@ export function HeroBlogCTA() {
           whiteSpace: "nowrap",
           minWidth: 0,
           flex: 1,
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(-4px)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
         }}
         data-testid="hero-blog-title"
       >
-        {latestPost.title}
+        {activePost.title}
       </span>
 
       {/* Arrow */}
