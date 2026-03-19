@@ -13,6 +13,7 @@ import AdminBlogEditor from "@/pages/admin-blog-editor";
 import Blog from "@/pages/blog";
 import BlogPostPage from "@/pages/blog-post";
 import NotFound from "@/pages/not-found";
+import { CookieBanner } from "@/components/cookie-banner";
 
 function Router() {
   return (
@@ -38,6 +39,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <CookieBanner />
       </TooltipProvider>
     </QueryClientProvider>
   );

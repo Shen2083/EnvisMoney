@@ -10,6 +10,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { FAQSection } from "@/components/faq-section";
 import { Footer } from "@/components/footer";
+import { hasAnalyticsConsent } from "@/lib/cookie-consent";
 
 
 export default function Home() {
@@ -30,7 +31,7 @@ export default function Home() {
     onSuccess: () => {
       setHeroSubmitted(true);
       setHeroError("");
-      if (typeof window.gtag === "function") {
+      if (hasAnalyticsConsent() && typeof window.gtag === "function") {
         window.gtag("event", "sign_up", {
           method: "waitlist_hero",
         });
