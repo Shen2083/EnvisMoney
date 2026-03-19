@@ -23,6 +23,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
+import { hasAnalyticsConsent } from "@/lib/cookie-consent";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -55,7 +56,7 @@ export function WaitlistForm() {
     onSuccess: () => {
       setIsSubmitted(true);
       setErrorMessage("");
-      if (typeof window.gtag === "function") {
+      if (hasAnalyticsConsent() && typeof window.gtag === "function") {
         window.gtag("event", "sign_up", {
           method: "waitlist_form",
         });

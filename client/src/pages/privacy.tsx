@@ -193,14 +193,17 @@ export default function PrivacyPolicy() {
               <section id="cookies">
                 <h2 className="text-xl font-semibold mb-3" data-testid="heading-cookies">9. Cookies and Tracking</h2>
                 <p className="text-muted-foreground mb-3">
-                  We use essential cookies to ensure our website functions properly and analytics cookies to understand how visitors use our site. You can control cookie preferences through your browser settings.
+                  We use essential cookies to ensure our website functions properly and analytics cookies to understand how visitors use our site. When you first visit our site, a cookie consent banner will allow you to accept or reject non-essential cookies. You can change your preferences at any time by clearing your browser's local storage for this site.
                 </p>
                 <div className="text-muted-foreground">
                   <h3 className="font-semibold text-foreground mb-2">Types of Cookies:</h3>
                   <ul className="list-disc list-inside space-y-1 ml-4">
-                    <li><strong>Essential:</strong> Required for website functionality</li>
-                    <li><strong>Analytics:</strong> Help us understand usage patterns (anonymised)</li>
+                    <li><strong>Essential:</strong> Required for website functionality (always active)</li>
+                    <li><strong>Analytics:</strong> Help us understand usage patterns via Google Analytics (requires your consent)</li>
                   </ul>
+                  <p className="mt-3">
+                    Analytics cookies are only loaded after you give explicit consent through our cookie banner. If you reject analytics cookies, no tracking data is collected.
+                  </p>
                 </div>
               </section>
 
